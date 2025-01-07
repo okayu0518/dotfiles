@@ -1,0 +1,42 @@
+# システム固有のファイル
+.DS_Store
+Thumbs.db
+*.Identifier
+
+# 編集履歴や一時ファイル
+*.swp
+*.swo
+*.tmp
+*.bak
+*.old
+
+# バックアップファイル（例: Vimの~ファイル）
+*~
+
+# ログファイル
+*.log
+
+# SSHやGPG関連のプライベートな設定
+*.pem
+*.key
+*.crt
+*.gpg
+*.asc
+
+# macOS用のFinderのメタデータ
+.AppleDouble
+.Spotlight-V100
+.Trashes
+
+# サーバーやOS固有の設定
+.idea/
+.vscode/
+.cache/
+.local/
+.config/nvim/swap/
+
+# その他のセキュリティ情報
+.env
+secrets.yml
+config.json
+
