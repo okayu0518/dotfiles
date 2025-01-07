@@ -1,0 +1,1 @@
+/home/okayu0518/.vimrc
