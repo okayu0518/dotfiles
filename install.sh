@@ -7,27 +7,37 @@ echo "Updating package lists..."
 sudo apt update
 
 # パッケージをインストール
+# libfuse2はwslのため
 echo "Installing required tools for LazyVim..."
-sudo apt install -y git curl wget docker.io docker-compose \
+sudo apt install -y git curl wget \
   build-essential unzip python3 python3-pip python3-venv \
-  nodejs npm ripgrep fzf xsel fcitx5 fcitx5-mozc
+  nodejs npm ripgrep fzf fd-find xsel libfuse2
 
-# Google Chromeのインストール
-echo "Installing Google Chrome..."
-wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt --fix-broken install -y # 依存関係を解決
-rm google-chrome-stable_current_amd64.deb
+# lagygitのインストール
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
+rm lazygit.tar.gz lazygit
 
-# Dockerの設定
-echo "Setting up Docker..."
-sudo systemctl enable docker
-sudo systemctl start docker
-sudo usermod -aG docker $USER
+# # Google Chromeのインストール
+# echo "Installing Google Chrome..."
+# wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome-stable_current_amd64.deb
+# sudo dpkg -i google-chrome-stable_current_amd64.deb
+# sudo apt --fix-broken install -y # 依存関係を解決
+# rm google-chrome-stable_current_amd64.deb
+
+# # Dockerの設定
+# sudo apt install -y docker.io docker-compose
+# echo "Setting up Docker..."
+# sudo systemctl enable docker
+# sudo systemctl start docker
+# sudo usermod -aG docker $USER
 
 # Nerd FontsのHackフォントをインストール
 echo "Installing Hack Nerd Font..."
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip -P .
+# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip -P .
+wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip -P .
 unzip -o ./Hack.zip -d ~/.local/share/fonts
 fc-cache -fv
 rm ./Hack.zip
@@ -46,7 +56,10 @@ ln -sf ~/dotfiles/.bashrc ~/.bashrc
 
 # Neovimの設定を同期
 echo "Syncing Neovim configuration from dotfiles..."
-ln -sf ~/dotfiles/nvim ~/.config/nvim
+# シンボリックリンクが存在しない場合のみ作成
+if [ ! -L ~/.config/nvim ]; then
+  ln -sf ~/dotfiles/nvim ~/.config/nvim
+fi
 
 # 必要なNode.jsバージョンを確認し、Neovimプラグインをインストール
 echo "Checking Node.js and installing Neovim plugin..."
@@ -57,5 +70,4 @@ fi
 sudo npm install -g neovim
 
 # 完了メッセージ
-echo "Dotfiles setup is complete! LazyVim, Telescope, GitHub Copilot, Google Chrome, Slack, and Fcitx5 are configured."
 echo "Please restart your terminal and re-login to apply Docker group changes."

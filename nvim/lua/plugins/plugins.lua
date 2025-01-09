@@ -8,4 +8,14 @@ return {
     "github/copilot.vim",
     lazy = false,
   },
+
+  -- add nvim-neo-tree settings
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      window = {
+        width = 26,
+      },
+    },
+  },
 }
