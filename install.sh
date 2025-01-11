@@ -34,13 +34,13 @@ rm lazygit.tar.gz lazygit
 # sudo systemctl start docker
 # sudo usermod -aG docker $USER
 
-# Nerd FontsのHackフォントをインストール
-echo "Installing Hack Nerd Font..."
-# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip -P .
-wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip -P .
-unzip -o ./Hack.zip -d ~/.local/share/fonts
-fc-cache -fv
-rm ./Hack.zip
+# # Nerd FontsのHackフォントをインストール
+# echo "Installing Hack Nerd Font..."
+# # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip -P .
+# wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip -P .
+# unzip -o ./Hack.zip -d ~/.local/share/fonts
+# fc-cache -fv
+# rm ./Hack.zip
 
 # Neovim AppImage版のインストール
 echo "Installing Neovim AppImage..."
