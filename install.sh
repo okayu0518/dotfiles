@@ -52,11 +52,15 @@ chmod u+x $NEOVIM_APPIMAGE_PATH
 
 # .bashrcを同期
 echo "Syncing .bashrc from dotfiles..."
-ln -sf ./.bashrc ~/.bashrc
+ln -sf ~/dotfiles/.bashrc ~/.bashrc
 
 # .gitconfigを同期
 echo "Syncing .gitconfig from dotfiles..."
-ln -sf ./gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
+
+# .tmux.confを同期
+echo "Syncing .tmux.conf from dotfiles..."
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 # Neovimの設定を同期
 echo "Syncing Neovim configuration from dotfiles..."
