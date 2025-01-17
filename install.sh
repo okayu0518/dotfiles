@@ -7,7 +7,7 @@ echo "Updating package lists..."
 sudo apt update
 
 # パッケージをインストール
-# libfuse2はwslのため
+# libfuse2はneovim on wslのため
 echo "Installing required tools for LazyVim..."
 sudo apt install -y git curl wget \
   build-essential unzip python3 python3-pip python3-venv \
@@ -52,7 +52,11 @@ chmod u+x $NEOVIM_APPIMAGE_PATH
 
 # .bashrcを同期
 echo "Syncing .bashrc from dotfiles..."
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
+ln -sf ./.bashrc ~/.bashrc
+
+# .gitconfigを同期
+echo "Syncing .gitconfig from dotfiles..."
+ln -sf ./gitconfig ~/.gitconfig
 
 # Neovimの設定を同期
 echo "Syncing Neovim configuration from dotfiles..."
