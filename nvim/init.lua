@@ -25,6 +25,7 @@ vim.opt.hlsearch = true            -- 検索結果をハイライト表示
 -- シンタックスハイライトの有効化 ------------------------------------
 vim.opt.syntax = "enable"          -- シンタックスハイライトを有効化
 
+
 -- 永続的なアンドゥの設定 --------------------------------------------
 if vim.fn.has("persistent_undo") == 1 then
   local undo_dir = vim.fn.expand("~/.vim/undo")
@@ -78,129 +79,115 @@ vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", {
 vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { desc = "find oldfiles" })  -- 開いたファイル検索
 
 
--- lazy.nvimのセットアップ --------------------------------------------
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
-vim.opt.rtp:prepend(lazypath)         -- lazy.nvimをランタイムパスに追加
+vim.opt.rtp:prepend(lazypath)
 
--- プラグインの設定 ---------------------------------------------------
+-- Lazy.nvim setup
 require("lazy").setup({
-  -- Neo-tree: ファイルエクスプローラー
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
+  spec = {
+    -- Tokyonight: カラースキーム
+    {
+      "folke/tokyonight.nvim",
+      lazy = false, 
+      priority = 1000,
+      opts = {},
     },
-    config = function()
-      require("neo-tree").setup({
+    -- Neo-tree: ファイルエクスプローラー
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+      },
+      opts = {
         window = {
-          width = 25,  -- Neo-treeのウィンドウ幅を設定
+          width = 25,
           mappings = {
-              ["l"] = "open", 
-              ["h"] = "close_node",
-          }, 
-        },
-      })
-    end,
-  },
-  -- Bufferline: バッファ管理
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("bufferline").setup({})
-    end,
-  },
-  -- Gitsigns: Gitの変更を表示
-  {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup()
-    end,
-  },
-  -- Which-key: キーマッピングのヘルプ表示
-  {
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup({})
-    end,
-  },
-  -- fzf-lua: 高速ファジー検索
-  {
-    "ibhagwan/fzf-lua",
-    dependencies = {
-      "nvim-lua/plenary.nvim",  -- fzf-luaの依存関係
-    },
-    config = function()
-      -- fzf-lua の設定
-      require("fzf-lua").setup({
-        -- 基本設定
-        winopts = {
-          height = 0.85,        -- ウィンドウの高さ
-          width = 0.90,         -- ウィンドウの幅
-        },
-      })
-    end,
-  },
-  -- Copilot: AI補完
-  {
-    "zbirenbaum/copilot.lua",
-    config = function()
-      require("copilot").setup({
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,  -- 自動補完を有効化
-          keymap = {
-            accept = "<Tab>",    -- Tabキーで補完を受け入れ
-            dismiss = "<C-e>",   -- C-eで補完をキャンセル
+            ["l"] = "open",
+            ["h"] = "close_node",
           },
         },
-      })
-    end,
-  },
-  -- Treesitter: シンタックスハイライト
-  {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "python", "markdown", "lua", "cpp", "c", "javascript", "html", "css" },  -- 設定する言語
-        highlight = { enable = true },  -- シンタックスハイライトを有効化
-      })
-    end,
-  },
-  -- Kanagawa: カラースキーム
-  {
-    "rebelot/kanagawa.nvim",
-    config = function()
-      require("kanagawa").setup({
-        transparent = false,  -- 背景を透明化しない
-        colors = {
-          theme = { wave = {}, lotus = {}, dragon = {} },  -- 必要に応じてカスタマイズ
+      },
+    },
+
+    -- Bufferline: バッファ管理
+    {
+      "akinsho/bufferline.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      opts = {},
+    },
+
+    -- Gitsigns: Gitの変更を表示
+    {
+      "lewis6991/gitsigns.nvim",
+      opts = {},
+    },
+
+    -- Which-key: キーマッピングのヘルプ表示
+    {
+      "folke/which-key.nvim",
+      opts = {},
+    },
+
+    -- fzf-lua: 高速ファジー検索
+    {
+      "ibhagwan/fzf-lua",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {
+        winopts = {
+          height = 0.85,
+          width = 0.90,
         },
-      })
-      vim.cmd("colorscheme kanagawa")  -- カラースキームを適用
-    end,
-  },
-  -- Lualine: ステータスライン
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("lualine").setup({
+      },
+    },
+
+    -- Copilot: AI補完
+    {
+      "zbirenbaum/copilot.lua",
+      opts = {
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<Tab>",
+            dismiss = "<C-e>",
+          },
+        },
+      },
+    },
+
+    -- Treesitter: シンタックスハイライト
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      opts = {
+        ensure_installed = { "python", "markdown", "lua", "cpp", "c", "javascript", "html", "css" },
+        highlight = { enable = true },
+      },
+    },
+
+    -- Lualine: ステータスライン
+    {
+      "nvim-lualine/lualine.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      opts = {
         options = {
-          theme = "auto",  
+          theme = "auto",
           section_separators = { left = "", right = "" },
           component_separators = { left = "", right = "" },
         },
@@ -211,7 +198,11 @@ require("lazy").setup({
           lualine_y = { "progress" },
           lualine_z = { "location" },
         },
-      })
-    end,
+      },
+    },
   },
+  install = { colorscheme = { "tokyonight" } },
+  checker = { enabled = true },
 })
+
+vim.cmd.colorscheme("tokyonight")
