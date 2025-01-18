@@ -11,7 +11,7 @@ sudo apt update
 echo "Installing required tools for LazyVim..."
 sudo apt install -y git curl wget \
   build-essential unzip python3 python3-pip python3-venv \
-  nodejs npm ripgrep fzf fd-find xsel libfuse2
+  nodejs npm ripgrep fzf fd-find xsel libfuse3 tmux htop
 
 # lagygitのインストール
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
