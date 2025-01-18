@@ -23,7 +23,7 @@ vim.opt.incsearch = true           -- 検索文字列を入力中に表示
 vim.opt.hlsearch = true            -- 検索結果をハイライト表示
 
 -- シンタックスハイライトの有効化 ------------------------------------
-vim.cmd("syntax on")               -- シンタックスハイライトを有効化
+vim.opt.syntax = "enable"          -- シンタックスハイライトを有効化
 
 -- 永続的なアンドゥの設定 --------------------------------------------
 if vim.fn.has("persistent_undo") == 1 then
@@ -37,27 +37,46 @@ end
 
 -- leaderキーの設定 ---------------------------------------------------
 vim.g.mapleader = " "             -- leaderキーをスペースに設定
-vim.g.maplocalleader = " "         -- ローカルのleaderキーもスペース
+vim.g.maplocalleader = "\\"        -- local leaderキーをバックスラッシュに設定
 
 -- キーマッピング -----------------------------------------------------
-local set_keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+-- Move to window using the <ctrl> hjkl keys
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
--- ウィンドウサイズ変更（Ctrl+矢印でウィンドウのリサイズ） --------------
-set_keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-set_keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-set_keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-set_keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+-- Resize window using <ctrl> arrow keys
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
--- ウィンドウ間移動（Ctrl+h/j/k/lでウィンドウ間移動） -------------------
-set_keymap("n", "<C-h>", "<C-w>h", opts)
-set_keymap("n", "<C-j>", "<C-w>j", opts)
-set_keymap("n", "<C-k>", "<C-w>k", opts)
-set_keymap("n", "<C-l>", "<C-w>l", opts)
+-- windows
+vim.keymap.set("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
+vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
--- バッファ間移動（Shift+h/j/k/lでバッファ間移動） ---------------------
-set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
-set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+-- buffers
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", {})  -- Neo-treeを開閉
+
+vim.keymap.set("n", "<leader>l", ":Lazy<CR>", {}) -- lazy.nvimの設定を開く
+
+-- fzf-luaのキーマッピング
+-- ルートディレクトリからファイル検索
+vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files({ cwd = '/' })<CR>", { desc = "find files (root)" })  
+vim.keymap.set("n", "<leader>fF", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "find files (cwd)" })  -- ファイル検索
+vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').live_grep({ cwd = '/' })<CR>", { desc = "live grep(root)" }) -- ファイル内検索
+vim.keymap.set("n", "<leader>fG", "<cmd>lua require('fzf-lua').live_grep()<CR>", { desc = "live grep(cwd)" }) -- ファイル内検索
+vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = "find buffers" })  -- バッファ検索
+vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { desc = "find oldfiles" })  -- 開いたファイル検索
+
 
 -- lazy.nvimのセットアップ --------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -87,9 +106,12 @@ require("lazy").setup({
       require("neo-tree").setup({
         window = {
           width = 25,  -- Neo-treeのウィンドウ幅を設定
+          mappings = {
+              ["l"] = "open", 
+              ["h"] = "close_node",
+          }, 
         },
       })
-      set_keymap("n", "<leader>e", ":Neotree toggle<CR>", opts)  -- Neo-treeを開閉
     end,
   },
   -- Bufferline: バッファ管理
@@ -98,8 +120,6 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("bufferline").setup({})
-      set_keymap("n", "[b", ":BufferLineCyclePrev<CR>", opts)  -- 前のバッファへ移動
-      set_keymap("n", "]b", ":BufferLineCycleNext<CR>", opts)  -- 次のバッファへ移動
     end,
   },
   -- Gitsigns: Gitの変更を表示
@@ -116,15 +136,21 @@ require("lazy").setup({
       require("which-key").setup({})
     end,
   },
-  -- Telescope: ファイル/テキスト検索
+  -- fzf-lua: 高速ファジー検索
   {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    "ibhagwan/fzf-lua",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- fzf-luaの依存関係
+    },
     config = function()
-      require("telescope").setup({})
-      set_keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)  -- ファイル検索
-      set_keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)   -- テキスト検索
-      set_keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)     -- バッファ一覧
+      -- fzf-lua の設定
+      require("fzf-lua").setup({
+        -- 基本設定
+        winopts = {
+          height = 0.85,        -- ウィンドウの高さ
+          width = 0.90,         -- ウィンドウの幅
+        },
+      })
     end,
   },
   -- Copilot: AI補完
@@ -165,6 +191,27 @@ require("lazy").setup({
         },
       })
       vim.cmd("colorscheme kanagawa")  -- カラースキームを適用
+    end,
+  },
+  -- Lualine: ステータスライン
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "auto",  
+          section_separators = { left = "", right = "" },
+          component_separators = { left = "", right = "" },
+        },
+        sections = {
+          lualine_b = { "branch", "diff" },
+          lualine_c = { "filename", "lsp_progress" },
+          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
+        },
+      })
     end,
   },
 })
