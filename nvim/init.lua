@@ -70,9 +70,9 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", {}) -- lazy.nvimの設定を開く
 
 -- fzf-luaのキーマッピング
 -- ルートディレクトリからファイル検索
-vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files({ cwd = '/' })<CR>", { desc = "find files (root)" })  
+vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files({ cwd = '~' })<CR>", { desc = "find files (root)" })  
 vim.keymap.set("n", "<leader>fF", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "find files (cwd)" })  -- ファイル検索
-vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').live_grep({ cwd = '/' })<CR>", { desc = "live grep(root)" }) -- ファイル内検索
+vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').live_grep({ cwd = '~' })<CR>", { desc = "live grep(root)" }) -- ファイル内検索
 vim.keymap.set("n", "<leader>fG", "<cmd>lua require('fzf-lua').live_grep()<CR>", { desc = "live grep(cwd)" }) -- ファイル内検索
 vim.keymap.set("n", "<leader>fb", "<cmd>lua require('fzf-lua').buffers()<CR>", { desc = "find buffers" })  -- バッファ検索
 vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles()<CR>", { desc = "find oldfiles" })  -- 開いたファイル検索
