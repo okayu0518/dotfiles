@@ -11,7 +11,7 @@ sudo apt update
 echo "Installing required tools for LazyVim..."
 sudo apt install -y git curl wget \
   build-essential unzip python3 python3-pip python3-venv \
-  nodejs npm ripgrep fzf fd-find xsel libfuse3 tmux htop
+  nodejs npm ripgrep fzf fd-find xsel libfuse2 tmux htop
 
 # # Dockerの設定
 # sudo apt install -y docker.io docker-compose
