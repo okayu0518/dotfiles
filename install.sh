@@ -9,28 +9,17 @@ sudo apt update
 # パッケージをインストール
 # libfuse2はneovim on wslのため
 echo "Installing required tools for LazyVim..."
-sudo apt install -y git curl wget \
+sudo apt install -y vim git curl wget \
   build-essential unzip python3 python3-pip python3-venv \
   nodejs npm ripgrep fzf fd-find xsel libfuse2 tmux htop
-
-# # Dockerの設定
-# sudo apt install -y docker.io docker-compose
-# echo "Setting up Docker..."
-# sudo systemctl enable docker
-# sudo systemctl start docker
-# sudo usermod -aG docker $USER
-
-# Neovim AppImage版のインストール
-echo "Installing Neovim AppImage..."
-NEOVIM_APPIMAGE_PATH="/usr/local/bin/nvim"
-wget -q https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O nvim.appimage
-chmod u+x ./nvim.appimage
-sudo mv ./nvim.appimage $NEOVIM_APPIMAGE_PATH
-chmod u+x $NEOVIM_APPIMAGE_PATH
 
 # .bashrcを同期
 echo "Syncing .bashrc from dotfiles..."
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
+
+# .vimrcを同期
+echo "Syncing .vimrc from dotfiles..."
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
 
 # .gitconfigを同期
 echo "Syncing .gitconfig from dotfiles..."
@@ -46,6 +35,21 @@ echo "Syncing Neovim configuration from dotfiles..."
 if [ ! -L ~/.config/nvim ]; then
   ln -sf ~/dotfiles/nvim ~/.config/nvim
 fi
+
+# # Dockerの設定
+# sudo apt install -y docker.io docker-compose
+# echo "Setting up Docker..."
+# sudo systemctl enable docker
+# sudo systemctl start docker
+# sudo usermod -aG docker $USER
+
+# Neovim AppImage版のインストール
+echo "Installing Neovim AppImage..."
+NEOVIM_APPIMAGE_PATH="/usr/local/bin/nvim"
+wget -q https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O nvim.appimage
+chmod u+x ./nvim.appimage
+sudo mv ./nvim.appimage $NEOVIM_APPIMAGE_PATH
+chmod u+x $NEOVIM_APPIMAGE_PATH
 
 # 必要なNode.jsバージョンを確認し、Neovimプラグインをインストール
 echo "Checking Node.js and installing Neovim plugin..."
