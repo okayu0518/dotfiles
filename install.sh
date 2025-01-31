@@ -31,9 +31,18 @@ ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 # Neovimの設定を同期
 echo "Syncing Neovim configuration from dotfiles..."
+mkdir -p ~/.config/nvim
 # シンボリックリンクが存在しない場合のみ作成
 if [ ! -L ~/.config/nvim ]; then
   ln -sf ~/dotfiles/nvim ~/.config/nvim
+fi
+
+# alacrittyの設定を同期
+echo "Syncing Alacritty configuration from dotfiles..."
+mkdir -p ~/.config/alacritty
+# シンボリックリンクが存在しない場合のみ作成
+if [ ! -L ~/.config/alacritty/alacritty.yml ]; then
+  ln -sf ~/dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml
 fi
 
 # # Dockerの設定
