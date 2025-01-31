@@ -1,1 +1,57 @@
-/home/okayu0518/.config/alacritty/alacritty.toml
+live_config_reload = true
+
+[colors.primary]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+#shape = "Block"
+shape = "Block"
+
+[font]
+# builtin_box_drawing = true
+size = 12.0
+
+[font.bold]
+family = "Hack Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 1
+
+[font.italic]
+family = "Hack Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+#[font.offset]
+#x = 0
+#y = 1
+
+[mouse]
+#hide_when_typing = true
+
+[scrolling]
+#history = 10000
+#multiplier = 3
+
+[shell]
+program = "/bin/bash"
+#args = ["--login", "-c", "tmux attach || tmux new"]
+args = ["--login"]
+
+[window]
+decorations = "full"
+dynamic_padding = true
+opacity = 0.95
+
+[window.padding]
+#x = 5
+#y = 5
