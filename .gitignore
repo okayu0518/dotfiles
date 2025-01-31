@@ -17,6 +17,7 @@ Thumbs.db
 *.log
 
 # SSHやGPG関連のプライベートな設定
+.ssh
 *.pem
 *.key
 *.crt
@@ -34,9 +35,14 @@ Thumbs.db
 .cache/
 .local/
 .config/nvim/swap/
+.aws
 
 # その他のセキュリティ情報
 .env
 secrets.yml
 config.json
+
+.bash_history
+.zsh_history
+.viminfo
 
