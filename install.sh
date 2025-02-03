@@ -55,10 +55,9 @@ fi
 # Neovim AppImage版のインストール
 echo "Installing Neovim AppImage..."
 NEOVIM_APPIMAGE_PATH="/usr/local/bin/nvim"
-wget -q https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O nvim.appimage
-chmod u+x ./nvim.appimage
-sudo mv ./nvim.appimage $NEOVIM_APPIMAGE_PATH
-chmod u+x $NEOVIM_APPIMAGE_PATH
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+chmod u+x nvim-linux-x86_64.appimage
+sudo mv ./nvim-linux-x86_64.appimage $NEOVIM_APPIMAGE_PATH
 
 # 必要なNode.jsバージョンを確認し、Neovimプラグインをインストール
 echo "Checking Node.js and installing Neovim plugin..."
