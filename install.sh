@@ -9,7 +9,7 @@ sudo apt update
 # パッケージをインストール
 # libfuse2はneovim on wslのため
 echo "Installing required tools for LazyVim..."
-sudo apt install -y vim git curl wget \
+sudo apt install -y vim-gtk3 git curl wget \
   build-essential unzip python3 python3-pip python3-venv \
   nodejs npm ripgrep fzf fd-find xsel libfuse2 tmux htop
 
