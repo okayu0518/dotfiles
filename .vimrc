@@ -19,7 +19,7 @@ set laststatus=2          " ステータスラインを常に表示
 set showmatch             " 対応する括弧を強調表示
 
 " カラースキームとシンタックス
-colorscheme elflord        " カラースキーム（お好みで変更可能）
+" colorscheme evening        " カラースキーム（お好みで変更可能）
 syntax on                 " シンタックスハイライトを有効化
 
 " タブとインデント設定
