@@ -67,3 +67,25 @@ set formatoptions+=mM     " 日本語で折り返しを有効化
 
 " netrw（ファイルブラウザ）設定
 let g:netrw_liststyle = 3
+
+" leaderをスペースへ設定
+let mapleader = "\<Space>"
+
+" バッファ機能強化設定
+" 次のバッファに移動
+nnoremap ]b :bnext<CR>
+
+" 前のバッファに移動
+nnoremap [b :bprevious<CR>
+
+" バッファを削除
+nnoremap <leader>bd :bdelete<CR>
+
+" 特定のバッファに移動（バッファ番号を指定）
+nnoremap <leader>bb :buffer<Space>
+
+" ウィンドウ分割のサイズ変更
+nnoremap <C-Left> :vertical resize -2<CR>
+nnoremap <C-Right> :vertical resize +2<CR>
+nnoremap <C-Up> :resize +2<CR>
+nnoremap <C-Down> :resize -2<CR>

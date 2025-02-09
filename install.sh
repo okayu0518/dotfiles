@@ -52,20 +52,20 @@ fi
 # sudo systemctl start docker
 # sudo usermod -aG docker $USER
 
-# Neovim AppImage版のインストール
-echo "Installing Neovim AppImage..."
-NEOVIM_APPIMAGE_PATH="/usr/local/bin/nvim"
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
-chmod u+x nvim-linux-x86_64.appimage
-sudo mv ./nvim-linux-x86_64.appimage $NEOVIM_APPIMAGE_PATH
-
-# 必要なNode.jsバージョンを確認し、Neovimプラグインをインストール
-echo "Checking Node.js and installing Neovim plugin..."
-if ! command -v npm &>/dev/null; then
-  echo "Node.js is required for GitHub Copilot. Please install it and rerun this script."
-  exit 1
-fi
-sudo npm install -g neovim
+# # Neovim AppImage版のインストール
+# echo "Installing Neovim AppImage..."
+# NEOVIM_APPIMAGE_PATH="/usr/local/bin/nvim"
+# curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+# chmod u+x nvim-linux-x86_64.appimage
+# sudo mv ./nvim-linux-x86_64.appimage $NEOVIM_APPIMAGE_PATH
+#
+# # 必要なNode.jsバージョンを確認し、Neovimプラグインをインストール
+# echo "Checking Node.js and installing Neovim plugin..."
+# if ! command -v npm &>/dev/null; then
+#   echo "Node.js is required for GitHub Copilot. Please install it and rerun this script."
+#   exit 1
+# fi
+# sudo npm install -g neovim
 
 # 完了メッセージ
 echo "Please restart your terminal and re-login to apply Docker group changes."
