@@ -66,7 +66,11 @@ set wildmenu              " コマンド補完メニューを有効化
 set formatoptions+=mM     " 日本語で折り返しを有効化
 
 " netrw（ファイルブラウザ）設定
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 1
+" サイズを(K,M,G)で表示する
+let g:netrw_sizestyle="H"
+" プレビューウィンドウを垂直分割で表示する
+let g:netrw_preview=1
 
 " leaderをスペースへ設定
 let mapleader = "\<Space>"

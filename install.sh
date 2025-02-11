@@ -67,5 +67,8 @@ fi
 # fi
 # sudo npm install -g neovim
 
+# kut wifiの優先度設定(勝手につながってうざいから)
+sudo nmcli connection modify "kut" ipv4.route-metric 100
+
 # 完了メッセージ
 echo "Please restart your terminal and re-login to apply Docker group changes."
