@@ -120,8 +120,7 @@ fi
 
 # Git branch in prompt
 parse_git_branch() {
-  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  git rev-parse --abbrev-ref HEAD 2>/dev/null | sed 's/^/ (/;s/$/)/'
 }
 
-# PS1 prompt with better color separation
 export PS1="\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "

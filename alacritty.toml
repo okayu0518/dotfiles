@@ -6,37 +6,23 @@ foreground = "#CDD6F4"
 
 [cursor]
 unfocused_hollow = true
-
-[cursor.style]
-#shape = "Block"
 shape = "Block"
+#shape = "Block"
 
 [font]
 # builtin_box_drawing = true
 size = 12.0
-
-[font.bold]
-family = "Hack Nerd Font"
-style = "Bold"
-
-[font.glyph_offset]
-x = 0
-y = 1
-
-[font.italic]
-family = "Hack Nerd Font"
-style = "Italic"
-
-[font.normal]
-family = "Hack Nerd Font"
-style = "Regular"
-
-#[font.offset]
-#x = 0
-#y = 1
+normal.family = "Hack Nerd Font"
+normal.style = "Regular"
+bold.family = "Hack Nerd Font"
+bold.style = "Bold"
+italic.family = "Hack Nerd Font"
+italic.style = "Italic"
+glyph_offset.x = 0
+glyph_offset.y = 1
 
 [mouse]
-#hide_when_typing = true
+hide_when_typing = true
 
 [scrolling]
 #history = 10000

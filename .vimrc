@@ -17,6 +17,7 @@ set listchars=tab:>-,trail:~,extends:>,precedes:<
 set showcmd               " コマンド入力中の内容を表示
 set laststatus=2          " ステータスラインを常に表示
 set showmatch             " 対応する括弧を強調表示
+set cursorline            " highlight the current line
 
 " カラースキームとシンタックス
 " colorscheme evening        " カラースキーム（お好みで変更可能）
