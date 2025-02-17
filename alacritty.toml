@@ -6,8 +6,7 @@ foreground = "#CDD6F4"
 
 [cursor]
 unfocused_hollow = true
-shape = "Block"
-#shape = "Block"
+style.shape = "Block"
 
 [font]
 # builtin_box_drawing = true
