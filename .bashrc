@@ -124,3 +124,10 @@ parse_git_branch() {
 }
 
 export PS1="\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \$ "
+
+# Add fdfind+fzf+cd key bindings
+function cdf() {
+  local dir
+  dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
+}
+
