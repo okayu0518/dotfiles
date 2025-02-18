@@ -11,11 +11,16 @@ sudo apt update
 echo "Installing required tools for LazyVim..."
 sudo apt install -y vim-gtk3 git curl wget \
   build-essential unzip python3 python3-pip python3-venv \
-  nodejs npm ripgrep fzf fd-find xsel libfuse2 tmux htop
+  nodejs npm ripgrep fzf fd-find xsel libfuse2 tmux htop zsh
 
 # .bashrcを同期
 echo "Syncing .bashrc from dotfiles..."
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
+
+# .zshrcを同期
+echo "Syncing .zshrc from dotfiles..."
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+chsh -s $(which zsh)
 
 # .vimrcを同期
 echo "Syncing .vimrc from dotfiles..."
