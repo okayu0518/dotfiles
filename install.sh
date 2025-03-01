@@ -6,12 +6,22 @@
 echo "Updating package lists..."
 sudo apt update
 
-# パッケージをインストール
-# libfuse2はneovim on wslのため
+# 普段遣いパッケージたちをインストール
 echo "Installing required tools for LazyVim..."
 sudo apt install -y vim-gtk3 git gh curl wget \
-  build-essential unzip python3 python3-pip python3-venv \
-  nodejs npm ripgrep fzf fd-find xsel libfuse2 tmux htop zsh
+  build-essential unzip nodejs npm zsh
+
+#たまにつかう便利ツール
+sudo apt install -y tree ripgrep fzf fd-find xsel tmux htop
+
+# pythonたち
+sudo apt install -y python3-dev python3-pip python3-venv
+
+# for neovim on wsl
+# sudo apt install -y libfuse2
+
+# ネタ
+sudo apt install -y cmatrix
 
 # .bashrcを同期
 echo "Syncing .bashrc from dotfiles..."
@@ -73,7 +83,7 @@ fi
 # sudo npm install -g neovim
 
 # kut wifiの優先度設定(勝手につながってうざいから)
-sudo nmcli connection modify "kut" ipv4.route-metric 100
+sudo nmcli connection modify "kut" connection.autoconnect-priority 100
 
 # 完了メッセージ
 echo "Please restart your terminal and re-login to apply Docker group changes."
