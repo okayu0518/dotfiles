@@ -2,7 +2,7 @@
 	email = 250376s@ugs.kochi-tech.ac.jp
 	name = okayu0518
 [core]
-	editor = nvim
+	editor = vim
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
