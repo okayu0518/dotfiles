@@ -69,3 +69,15 @@ cdf() {
 
 # Final Setup
 setopt histignorealldups sharehistory
+
+# Tmux Autostart Configuration
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  # Check if there are existing sessions
+  if tmux ls &> /dev/null; then
+    # Attach to the most recent session
+    exec tmux attach
+  else
+    # Create a new session
+    exec tmux
+  fi
+fi
