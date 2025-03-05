@@ -94,3 +94,8 @@ nnoremap <C-Left> :vertical resize -2<CR>
 nnoremap <C-Right> :vertical resize +2<CR>
 nnoremap <C-Up> :resize +2<CR>
 nnoremap <C-Down> :resize -2<CR>
+
+" カーソル形状変更
+let &t_SI = "\<Esc>[5 q"
+let &t_EI = "\<Esc>[1 q"
+
