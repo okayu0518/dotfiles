@@ -23,15 +23,15 @@ sudo apt install -y python3-dev python3-pip python3-venv
 # ネタ
 sudo apt install -y cmatrix
 
-# for yazi
-sudo apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
-
-#install yazi
-echo "Installing yazi..."
-wget -qO yazi.zip https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-gnu.zip
-unzip yazi-.zip -d yazi-temp
-sudo mv yazi-temp/*/yazi /usr/local/bin
-rm -rf yazi.zip yazi-temp
+# # for yazi
+# sudo apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+# 
+# #install yazi
+# echo "Installing yazi..."
+# wget -qO yazi.zip https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-gnu.zip
+# unzip yazi-.zip -d yazi-temp
+# sudo mv yazi-temp/*/yazi /usr/local/bin
+# rm -rf yazi.zip yazi-temp
 
 # .bashrcを同期
 echo "Syncing .bashrc from dotfiles..."
