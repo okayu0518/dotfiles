@@ -68,7 +68,7 @@ cdf() {
 }
 
 # Final Setup
-setopt histignorealldups sharehistory
+setopt histignorealldups
 
 # Tmux Autostart Configuration
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
