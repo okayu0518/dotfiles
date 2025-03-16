@@ -99,3 +99,13 @@ nnoremap <C-Down> :resize -2<CR>
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[1 q"
 
+" use insert mode like emacs
+inoremap <C-d> <Del>
+inoremap <C-h> <BS>
+inoremap <C-a> <home>
+inoremap <C-e> <End>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+inoremap <C-f> <right>
+inoremap <C-b> <left>
+
