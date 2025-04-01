@@ -93,7 +93,7 @@ fi
 # sudo npm install -g neovim
 
 # kut wifiの優先度設定(勝手につながってうざいから)
-sudo nmcli connection modify "kut" connection.autoconnect-priority 100
+sudo nmcli connection modify "kut" connection.autoconnect-priority -1
 
 # 完了メッセージ
 echo "Please restart your terminal and re-login to apply Docker group changes."
