@@ -9,10 +9,10 @@ sudo apt update
 # 普段遣いパッケージたちをインストール
 echo "Installing required tools for LazyVim..."
 sudo apt install -y vim-gtk3 git gh curl wget \
-  build-essential unzip nodejs npm zsh
+  build-essential unzip nodejs npm zsh byobu
 
 #たまにつかう便利ツール
-sudo apt install -y tree ripgrep fzf fd-find xsel tmux htop
+sudo apt install -y tree ripgrep fzf fd-find xsel htop
 
 # pythonたち
 sudo apt install -y python3-dev python3-pip python3-venv

@@ -70,14 +70,26 @@ cdf() {
 # Final Setup
 setopt histignorealldups
 
-# Tmux Autostart Configuration
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+# # Tmux Autostart Configuration
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   # Check if there are existing sessions
+#   if tmux ls &> /dev/null; then
+#     # Attach to the most recent session
+#     exec tmux attach
+#   else
+#     # Create a new session
+#     exec tmux
+#   fi
+# fi
+
+# byobu configuration
+if command -v byobu &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   # Check if there are existing sessions
-  if tmux ls &> /dev/null; then
+  if byobu-tmux ls &> /dev/null; then
     # Attach to the most recent session
-    exec tmux attach
+    exec byobu-tmux attach
   else
     # Create a new session
-    exec tmux
+    exec byobu-tmux new-session
   fi
 fi
