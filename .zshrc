@@ -22,9 +22,13 @@ if [[ "$TERM" == xterm-color || "$TERM" == *-256color ]]; then
 fi
 
 if [[ "$color_prompt" == yes ]]; then
-  PROMPT='%F{cyan}%n@%m %F{green}%~%f%F{yellow}${vcs_info_msg_0_}%f %# '
+  PROMPT='
+[%F{cyan}%n@%m%f:%F{green}%~%f]%F{yellow}${vcs_info_msg_0_}%f
+%# '
 else
-  PROMPT='%n@%m:%~ ${vcs_info_msg_0_} %# '
+  PROMPT='
+[%n@%m:%~:]${vcs_info_msg_0_} 
+%# '
 fi
 
 # Aliases
