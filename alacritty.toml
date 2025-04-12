@@ -35,7 +35,7 @@ args = ["--login"]
 [window]
 decorations = "full"
 dynamic_padding = true
-opacity = 0.85
+#opacity = 0.85
 
 [window.padding]
 #x = 5
