@@ -54,6 +54,11 @@ ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 echo "Syncing .tmux.conf from dotfiles..."
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
+# .byobuを同期
+echo "Syncing .byobu from dotfiles..."
+mkdir -p ~/.byobu
+ln -sf ~/dotfiles/.tmux.conf ~/.byobu/.tmux.conf
+
 # Neovimの設定を同期
 echo "Syncing Neovim configuration from dotfiles..."
 mkdir -p ~/.config/nvim
