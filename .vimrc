@@ -111,3 +111,5 @@ inoremap <C-n> <Down>
 inoremap <C-f> <right>
 inoremap <C-b> <left>
 
+" Windows CRLFを削除
+autocmd BufReadPost * silent! %s/\r//g
