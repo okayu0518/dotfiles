@@ -2,6 +2,12 @@
 
 # set -e  # エラーが発生したらスクリプトを停止
 
+# change capslock to ctrl
+# for X server
+echo "setxkbmap -option ctrl:nocaps" >> ~/.xprofile
+# for gnome
+gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+
 # 必要なツールのインストール（LazyVim用）
 echo "Updating package lists..."
 sudo apt update
