@@ -86,14 +86,14 @@ setopt histignorealldups
 #   fi
 # fi
 
-# byobu configuration
-if command -v byobu &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  # Check if there are existing sessions
-  if byobu-tmux ls &> /dev/null; then
-    # Attach to the most recent session
-    exec byobu-tmux attach
-  else
-    # Create a new session
-    exec byobu-tmux new-session
-  fi
-fi
+## byobu configuration
+#if command -v byobu &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  # Check if there are existing sessions
+#  if byobu-tmux ls &> /dev/null; then
+#    # Attach to the most recent session
+#    exec byobu-tmux attach
+#  else
+#    # Create a new session
+#    exec byobu-tmux new-session
+#  fi
+#fi
