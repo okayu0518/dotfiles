@@ -131,4 +131,4 @@ function cdf() {
   dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
 }
 
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
