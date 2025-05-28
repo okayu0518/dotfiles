@@ -3,14 +3,18 @@
 # Exit if not running interactively
 [[ $- != *i* ]] && return
 
+# =====================
 # History Configuration
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE APPEND_HISTORY
+# =====================
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE APPEND_HISTORY histignorealldups
 HISTSIZE=1000
 SAVEHIST=2000
 HISTFILE=~/.zsh_history
 export HISTTIMEFORMAT="%F %T"
 
+# =====================
 # Prompt Configuration
+# =====================
 autoload -Uz vcs_info
 precmd() { vcs_info }
 setopt prompt_subst
@@ -23,7 +27,7 @@ fi
 
 if [[ "$color_prompt" == yes ]]; then
   PROMPT='
-[%F{cyan}%n@%m%f:%F{green}%~%f]%F{yellow}${vcs_info_msg_0_}%f
+[%F{cyan}%n@%m%f:%F{green}%~%f%F{yellow}${vcs_info_msg_0_}%f]
 %# '
 else
   PROMPT='
@@ -31,7 +35,9 @@ else
 %# '
 fi
 
+# =====================
 # Aliases
+# =====================
 if [[ -x /usr/bin/dircolors ]]; then
   eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
   alias ls='ls --color=auto'
@@ -46,7 +52,9 @@ alias l='ls -CF'
 
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 
+# =====================
 # Completion Configuration
+# =====================
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -62,19 +70,22 @@ zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# =====================
 # Key Bindings
+# =====================
 bindkey -e  # Use emacs keybindings
 
+# =====================
 # Custom Functions
+# =====================
 cdf() {
   local dir
   dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
 }
 
-# Final Setup
-setopt histignorealldups
-
-# # Tmux Autostart Configuration
+# =====================
+# (Optional) Tmux/Byobu Autostart (commented out)
+# =====================
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #   # Check if there are existing sessions
 #   if tmux ls &> /dev/null; then
@@ -86,14 +97,14 @@ setopt histignorealldups
 #   fi
 # fi
 
-## byobu configuration
-#if command -v byobu &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#  # Check if there are existing sessions
-#  if byobu-tmux ls &> /dev/null; then
-#    # Attach to the most recent session
-#    exec byobu-tmux attach
-#  else
-#    # Create a new session
-#    exec byobu-tmux new-session
-#  fi
-#fi
+# ## byobu configuration
+# if command -v byobu &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   # Check if there are existing sessions
+#   if byobu-tmux ls &> /dev/null; then
+#     # Attach to the most recent session
+#     exec byobu-tmux attach
+#   else
+#     # Create a new session
+#     exec byobu-tmux new-session
+#   fi
+# fi

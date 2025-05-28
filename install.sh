@@ -46,7 +46,7 @@ ln -sf ~/dotfiles/.bashrc ~/.bashrc
 # .zshrcを同期
 echo "Syncing .zshrc from dotfiles..."
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
-chsh -s $(which zsh)
+# chsh -s $(which zsh)
 
 # .vimrcを同期
 echo "Syncing .vimrc from dotfiles..."
