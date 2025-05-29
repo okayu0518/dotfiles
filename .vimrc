@@ -22,7 +22,7 @@ set ruler                 " カーソル位置を表示
 set nowrap                " 行を折り返さない
 
 " カラースキームとシンタックス
-" colorscheme evening        " カラースキーム（お好みで変更可能）
+colorscheme evening        " カラースキーム（お好みで変更可能）
 syntax on                 " シンタックスハイライトを有効化
 
 " タブとインデント設定
