@@ -15,7 +15,7 @@ sudo apt update
 # 普段遣いパッケージたちをインストール
 echo "Installing required tools for LazyVim..."
 sudo apt install -y vim-gtk3 git gh curl wget \
-  build-essential unzip nodejs npm zsh byobu
+  build-essential unzip nodejs npm byobu
 
 #たまにつかう便利ツール
 sudo apt install -y tree ripgrep fzf fd-find xsel htop
@@ -44,8 +44,8 @@ echo "Syncing .bashrc from dotfiles..."
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
 
 # .zshrcを同期
-echo "Syncing .zshrc from dotfiles..."
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
+#echo "Syncing .zshrc from dotfiles..."
+#ln -sf ~/dotfiles/.zshrc ~/.zshrc
 # chsh -s $(which zsh)
 
 # .vimrcを同期
