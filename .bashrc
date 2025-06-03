@@ -99,3 +99,6 @@ cdf() {
   local dir
   dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
 }
+
+# 最近編集した.mdファイル上位10件を表示
+alias recent='find . -type f -name "*.md" -printf "%T@ %p\n" | sort -nr | head -n 10 | cut -d" " -f2-'
