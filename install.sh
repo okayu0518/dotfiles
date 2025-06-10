@@ -67,7 +67,8 @@ ln -sf ~/dotfiles/.tmux.conf ~/.byobu/.tmux.conf
 
 # Neovimの設定を同期
 echo "Syncing Neovim configuration from dotfiles..."
-mkdir -p ~/.config/nvim
+mkdir -p ~/.config/
+rm -rf ~/.config/nvim  # 既存のnvim設定を削除
 # シンボリックリンクが存在しない場合のみ作成
 if [ ! -L ~/.config/nvim ]; then
   ln -sf ~/dotfiles/nvim ~/.config/nvim
