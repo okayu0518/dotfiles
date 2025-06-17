@@ -60,6 +60,10 @@ ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 echo "Syncing .tmux.conf from dotfiles..."
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
+# .Xmodmapを同期
+echo "Syncing .Xmodmap from dotfiles..."
+ln -sf ~/dotfiles/.Xmodmap ~/.Xmodmap
+
 # .byobuを同期
 echo "Syncing .byobu from dotfiles..."
 mkdir -p ~/.byobu
