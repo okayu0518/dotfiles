@@ -100,5 +100,13 @@ cdf() {
   dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
 }
 
-# 最近編集した.mdファイル上位10件を表示
-alias recent='find . -type f -name "*.md" -printf "%T@ %p\n" | sort -nr | head -n 10 | cut -d" " -f2-'
+mysort() {
+    sort "$1" -o "$1"
+}
+
+recentfiles() {
+    local count=${1:-10}
+    find . -type f -printf '%T@ %P\n' | sort -nr | head -n "$count" | cut -d' ' -f2-
+}
+
+export QSYS_ROOTDIR="/home/okayu0518/intelFPGA_lite/24.1std/quartus/sopc_builder/bin"
