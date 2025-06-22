@@ -110,3 +110,7 @@ recentfiles() {
 }
 
 export QSYS_ROOTDIR="/home/okayu0518/intelFPGA_lite/24.1std/quartus/sopc_builder/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
