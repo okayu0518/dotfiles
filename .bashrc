@@ -110,6 +110,8 @@ recentfiles() {
 }
 
 export QSYS_ROOTDIR="/home/okayu0518/intelFPGA_lite/24.1std/quartus/sopc_builder/bin"
+export QUARTUS_ROOT="$HOME/intelFPGA_lite/24.1std/quartus"
+export PATH="$QUARTUS_ROOT/bin:QUARTUS_ROOT/linux64:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
