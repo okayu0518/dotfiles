@@ -9,5 +9,5 @@ ACCEL_PROP="libinput Accel Speed"
 DEVICE_ID=$(xinput list --id-only "$DEVICE_NAME")
 
 if [ -n "$DEVICE_ID" ]; then
-    xinput set-prop "$DEVICE_ID" "$ACCEL_PROP" 0.05
+    xinput set-prop "$DEVICE_ID" "$ACCEL_PROP" -0.5
 fi

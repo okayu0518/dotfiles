@@ -267,8 +267,23 @@ require('lazy').setup({
   --        end,
   --    }
   {
-    'github/copilot.vim',
-    lazy = false,
+    'zbirenbaum/copilot.lua',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup({
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<Tab>",
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+        panel = { enabled = true },
+      })
+    end,
   },
   --
   -- Here is a more advanced example where we pass configuration

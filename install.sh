@@ -91,27 +91,21 @@ echo "Installing Hack Nerd Font..."
 FONT_DIR="$HOME/.local/share/fonts"
 FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
 TEMP_DIR="/tmp/hack-nerd-font"
-
 # フォントディレクトリを作成
 mkdir -p "$FONT_DIR"
-
 # 一時ディレクトリを作成してフォントをダウンロード
 mkdir -p "$TEMP_DIR"
 echo "Downloading Hack Nerd Font..."
 wget -q "$FONT_URL" -O "$TEMP_DIR/Hack.zip"
-
 # フォントを解凍してインストール
 echo "Extracting and installing Hack Nerd Font..."
 unzip -q "$TEMP_DIR/Hack.zip" -d "$TEMP_DIR"
 cp "$TEMP_DIR"/*.ttf "$FONT_DIR/"
-
 # フォントキャッシュを更新
 echo "Updating font cache..."
 fc-cache -fv
-
 # 一時ファイルを削除
 rm -rf "$TEMP_DIR"
-
 echo "Hack Nerd Font has been installed successfully!"
 
 # # Dockerの設定
