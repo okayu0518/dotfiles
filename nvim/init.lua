@@ -270,19 +270,23 @@ require('lazy').setup({
     'zbirenbaum/copilot.lua',
     event = 'InsertEnter',
     config = function()
-      require('copilot').setup({
+      require('copilot').setup {
+        filetypes = {
+          -- enable copilot for these filetypes
+          ['*'] = true, -- enable copilot for all filetypes
+        },
         suggestion = {
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = "<Tab>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
+            accept = '<Tab>',
+            next = '<M-]>',
+            prev = '<M-[>',
+            dismiss = '<C-]>',
           },
         },
         panel = { enabled = true },
-      })
+      }
     end,
   },
   --
