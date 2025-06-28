@@ -109,6 +109,8 @@ recentfiles() {
     find . -type f -printf '%T@ %P\n' | sort -nr | head -n "$count" | cut -d' ' -f2-
 }
 
+alias tenki="curl wttr.in/香美市"
+
 export QSYS_ROOTDIR="/home/okayu0518/intelFPGA_lite/24.1std/quartus/sopc_builder/bin"
 export QUARTUS_ROOT="$HOME/intelFPGA_lite/24.1std/quartus"
 export PATH="$QUARTUS_ROOT/bin:QUARTUS_ROOT/linux64:$PATH"
