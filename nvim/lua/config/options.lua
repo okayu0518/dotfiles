@@ -1,6 +1,10 @@
 -- Options - Keep It Simple
 local opt = vim.opt
 
+-- Leader keys (set early)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- UI
 opt.number = true           -- Line numbers
 opt.relativenumber = true   -- Relative line numbers
