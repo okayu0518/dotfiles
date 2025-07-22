@@ -26,9 +26,9 @@ map("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 
--- Visual mode indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+-- -- Visual mode indenting
+-- map("v", "<", "<gv")
+-- map("v", ">", ">gv")
 
 -- Move lines with Alt+j/k
 map("n", "<A-j>", ":m .+1<CR>==")
@@ -39,8 +39,8 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv")
 map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- Better up/down
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Quick save and quit
 map("n", "<leader>fs", "<cmd>w<CR>", { desc = "Save file" })
