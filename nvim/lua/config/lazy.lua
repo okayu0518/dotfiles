@@ -83,7 +83,7 @@ require("lazy").setup({
     opts = {
       ensure_installed = {
         "bash", "c", "diff", "html", "javascript", "jsdoc", "json", "jsonc",
-        "lua", "luadoc", "luap", "markdown", "markdown_inline", "python", "query",
+        "lua", "luadoc", "luap", "markdown", "markdown_inline", "python", "query","latex", "verilog",
         "regex", "toml", "tsx", "typescript", "vim", "vimdoc", "yaml",
       },
       highlight = { enable = true },
