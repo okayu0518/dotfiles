@@ -33,7 +33,6 @@ install_packages() {
             sudo dnf install -y vim-enhanced git gh curl wget unzip nodejs npm \
                 byobu tree ripgrep fzf fd-find xsel htop cmatrix python3-devel \
                 python3-pip python3-virtualenv
-            sudo dnf groupinstall -y "Development Tools"
             ;;
         *)
             echo "Unsupported OS: $OS"

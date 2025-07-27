@@ -93,7 +93,8 @@ parse_git_branch() {
   git rev-parse --abbrev-ref HEAD 2>/dev/null | sed 's/^/ (/;s/$/)/'
 }
 
-export PS1="[\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\]]\n\$ "
+# Enhanced prompt with colored hostname
+export PS1="[\[\033[32m\]\u\[\033[00m\]@\[\033[35m\]\h\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\]]\n\$ "
 # fdfind + fzf + cd key binding
 cdf() {
   local dir
