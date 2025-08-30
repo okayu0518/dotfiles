@@ -28,7 +28,7 @@ syntax on                 " シンタックスハイライトを有効化
 " タブとインデント設定
 set tabstop=4             " タブを4スペースとして表示
 set shiftwidth=4          " 自動インデントを4スペースに設定
-set expandtab             " タブ文字ではなくスペースを使用
+"set expandtab             " タブ文字ではなくスペースを使用
 set autoindent            " 自動インデントを有効化
 set smartindent           " スマートインデントを有効化
 

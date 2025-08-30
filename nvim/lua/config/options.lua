@@ -29,7 +29,7 @@ opt.splitbelow = true       -- Horizontal splits below
 -- Indentation
 opt.tabstop = 2            -- Tab width
 opt.shiftwidth = 2         -- Indent width
-opt.expandtab = true       -- Use spaces instead of tabs
+-- opt.expandtab = true       -- Use spaces instead of tabs
 opt.autoindent = true      -- Auto indent new lines
 opt.breakindent = true     -- Wrapped lines maintain indent
 
