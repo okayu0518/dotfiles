@@ -4,9 +4,6 @@ local map = vim.keymap.set
 -- Clear search highlighting
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Exit terminal mode
-map("t", "<Esc><Esc>", "<C-\\><C-n>")
-
 -- Window navigation
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
@@ -50,13 +47,8 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- Quick save and quit
 map("n", "<leader>fs", "<cmd>w<CR>", { desc = "Save file" })
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
-map("i", "<C-s>", "<Esc><cmd>w<CR>", { desc = "Save file" })
 map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 map("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Quit all without saving" })
-
--- Select all
-map("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- Paste without losing register in visual mode
 map("x", "<leader>p", [["_dP]], { desc = "Paste without losing register" })
@@ -70,12 +62,8 @@ map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to black hole register"
 
 -- Quickfix
 map("n", "<leader>xq", "<cmd>copen<CR>", { desc = "Quickfix List" })
-map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
 -- Diagnostic keymaps
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>xl", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
