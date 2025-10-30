@@ -24,7 +24,7 @@ set ruler                 " カーソル位置を表示
 set wrap                " 行を折り返す
 
 " カラースキームとシンタックス
-"colorscheme evening        " カラースキーム（お好みで変更可能）
+" colorscheme evening        " カラースキーム（お好みで変更可能）
 syntax on                 " シンタックスハイライトを有効化
 
 " タブとインデント設定
@@ -106,6 +106,10 @@ inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-f> <right>
 inoremap <C-b> <left>
+
+" 表示行単位で上下移動するように
+nnoremap j gj
+nnoremap k gk
 
 " Windows CRLFを削除
 autocmd BufReadPost * silent! %s/\r//g
