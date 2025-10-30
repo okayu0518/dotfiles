@@ -1,3 +1,5 @@
+" don't try to be vi compatible
+set nocompatible
 " 基本設定
 set nobackup              " バックアップファイルを作成しない
 set nowritebackup         " 書き込み時のバックアップを作成しない
@@ -13,16 +15,16 @@ set number                " 行番号を表示
 set relativenumber        " 相対行番号を表示
 set scrolloff=5           " スクロール時の余白
 set list                  " 不可視文字を表示
-set listchars=tab:>-,trail:~,extends:>,precedes:<
+set listchars=tab:^\ ,trail:~
 set showcmd               " コマンド入力中の内容を表示
 set laststatus=2          " ステータスラインを常に表示
 set showmatch             " 対応する括弧を強調表示
 set cursorline            " highlight the current line
 set ruler                 " カーソル位置を表示
-set nowrap                " 行を折り返さない
+set wrap                " 行を折り返す
 
 " カラースキームとシンタックス
-colorscheme evening        " カラースキーム（お好みで変更可能）
+"colorscheme evening        " カラースキーム（お好みで変更可能）
 syntax on                 " シンタックスハイライトを有効化
 
 " タブとインデント設定
@@ -84,12 +86,6 @@ nnoremap ]b :bnext<CR>
 
 " 前のバッファに移動
 nnoremap [b :bprevious<CR>
-
-" バッファを削除
-nnoremap <leader>bd :bdelete<CR>
-
-" 特定のバッファに移動（バッファ番号を指定）
-nnoremap <leader>bb :buffer<Space>
 
 " ウィンドウ分割のサイズ変更
 nnoremap <C-Left> :vertical resize -2<CR>
