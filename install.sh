@@ -24,14 +24,14 @@ install_packages() {
             echo "Installing packages for Debian/Ubuntu..."
             sudo apt update
             sudo apt install -y vim-gtk3 git gh curl wget build-essential unzip \
-                nodejs npm byobu tree ripgrep fzf fd-find xsel htop python3-dev \
+                nodejs npm tmux tree ripgrep fzf fd-find xsel htop python3-dev \
                 python3-pip python3-venv cmatrix
             ;;
         fedora|rhel|centos|rocky|almalinux)
             echo "Installing packages for Red Hat based distro..."
             sudo dnf update -y
             sudo dnf install -y vim-enhanced git gh curl wget unzip nodejs npm \
-                byobu tree ripgrep fzf fd-find xsel htop cmatrix python3-devel \
+                tmux tree ripgrep fzf fd-find xsel htop cmatrix python3-devel \
                 python3-pip python3-virtualenv
             ;;
         *)
@@ -58,6 +58,10 @@ sync_configs() {
     # Alacritty
     mkdir -p "$HOME/.config/alacritty"
     ln -sf "$HOME/dotfiles/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+		# wezterm
+		mkdir -p "$HOME/.config/wezterm"
+		ln -sf "$HOME/dotfiles/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
+		echo "Configuration files synced!"
 }
 
 # フォントインストール
