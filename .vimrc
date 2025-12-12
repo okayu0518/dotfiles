@@ -39,7 +39,7 @@ set ignorecase            " 検索時に大文字小文字を無視
 set smartcase             " 大文字を含む場合は大文字小文字を区別
 set incsearch             " インクリメンタルサーチを有効化
 set hlsearch              " 検索結果をハイライト
-nnoremap <ESC><ESC> :nohlsearch<CR> " ESC 2回でハイライト解除
+"nnoremap <ESC><ESC> :nohlsearch<CR> " ESC 2回でハイライト解除
 
 " 永続的なアンドゥ設定
 if has('persistent_undo')
@@ -77,35 +77,32 @@ let g:netrw_sizestyle="H"
 " プレビューウィンドウを垂直分割で表示する
 let g:netrw_preview=1
 
-" leaderをスペースへ設定
-let mapleader = "\<Space>"
-
-" バッファ機能強化設定
-" 次のバッファに移動
-nnoremap ]b :bnext<CR>
-
-" 前のバッファに移動
-nnoremap [b :bprevious<CR>
-
-" ウィンドウ分割のサイズ変更
-nnoremap <C-Left> :vertical resize -2<CR>
-nnoremap <C-Right> :vertical resize +2<CR>
-nnoremap <C-Up> :resize +2<CR>
-nnoremap <C-Down> :resize -2<CR>
+"" バッファ機能強化設定
+"" 次のバッファに移動
+"nnoremap ]b :bnext<CR>
+"
+"" 前のバッファに移動
+"nnoremap [b :bprevious<CR>
+"
+"" ウィンドウ分割のサイズ変更
+"nnoremap <C-Left> :vertical resize -2<CR>
+"nnoremap <C-Right> :vertical resize +2<CR>
+"nnoremap <C-Up> :resize +2<CR>
+"nnoremap <C-Down> :resize -2<CR>
 
 " カーソル形状変更
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[1 q"
 
 " use insert mode like emacs
-inoremap <C-d> <Del>
-inoremap <C-h> <BS>
-inoremap <C-a> <home>
-inoremap <C-e> <End>
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
-inoremap <C-f> <right>
-inoremap <C-b> <left>
+"inoremap <C-d> <Del>
+"inoremap <C-h> <BS>
+"inoremap <C-a> <home>
+"inoremap <C-e> <End>
+"inoremap <C-p> <Up>
+"inoremap <C-n> <Down>
+"inoremap <C-f> <right>
+"inoremap <C-b> <left>
 
 " 表示行単位で上下移動するように
 nnoremap j gj
