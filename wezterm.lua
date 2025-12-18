@@ -19,11 +19,6 @@ config.font = wezterm.font_with_fallback {
     {
         -- 最も汎用的な「等幅」のエイリアス
         family = "Liberation Mono", 
-        -- 合字（リガチャ）の無効化を適用
-        features = {
-            '-liga', 
-            '-calt', 
-        },
     },
 
     -- Noto Sans JPが確実にあれば、最も推奨されます。
