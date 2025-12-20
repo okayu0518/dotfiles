@@ -27,4 +27,13 @@ config.font = wezterm.font_with_fallback {
     { family = "VL Gothic" },
 }
 
+-- Disable Alt+Enter (fullscreen toggle)
+config.keys = {
+  {
+    key = "Enter",
+    mods = "ALT",
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+}
+
 return config
