@@ -15,17 +15,17 @@ config.window_padding = {
   bottom = 0,
 }
 
-config.font = wezterm.font_with_fallback {
-    {
-        -- 最も汎用的な「等幅」のエイリアス
-        family = "Liberation Mono", 
-    },
-
-    -- Noto Sans JPが確実にあれば、最も推奨されます。
-	  { family = "Noto Sans CJK JP" },
-    { family = "TakaoGothic" },
-    { family = "VL Gothic" },
-}
+--config.font = wezterm.font_with_fallback {
+--	  { family = "Noto Sans CJK JP" },
+--    --{
+--    --    -- 最も汎用的な「等幅」のエイリアス
+--		--		family = "Liberation Mono", 
+--    --},
+--
+--    -- Noto Sans JPが確実にあれば、最も推奨されます。
+--    { family = "TakaoGothic" },
+--    { family = "VL Gothic" },
+--}
 
 -- Disable Alt+Enter (fullscreen toggle)
 config.keys = {
