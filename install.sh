@@ -25,20 +25,20 @@ install_packages() {
             sudo apt update
             sudo apt install -y vim-gtk3 git gh curl wget build-essential unzip \
                 nodejs npm tmux tree ripgrep fzf fd-find xsel htop python3-dev \
-                python3-pip python3-venv cmatrix neovim
+                python3-pip python3-venv cmatrix neovim tree-sitter-cli
             ;;
         fedora|rhel|centos|rocky|almalinux)
             echo "Installing packages for Red Hat based distro..."
             sudo dnf update -y
             sudo dnf install -y vim-enhanced git gh curl wget unzip nodejs npm \
                 tmux tree ripgrep fzf fd-find xsel htop cmatrix python3-devel \
-                python3-pip python3-virtualenv neovim
+                python3-pip python3-virtualenv neovim tree-sitter-cli
             ;;
         arch)
             echo "Installing packages for Arch Linux..."
             sudo pacman -Syu --noconfirm
             sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip \
-                nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim
+                nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli
             ;;
         *)
             echo "Unsupported OS: $OS"
