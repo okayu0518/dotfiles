@@ -25,14 +25,20 @@ install_packages() {
             sudo apt update
             sudo apt install -y vim-gtk3 git gh curl wget build-essential unzip \
                 nodejs npm tmux tree ripgrep fzf fd-find xsel htop python3-dev \
-                python3-pip python3-venv cmatrix
+                python3-pip python3-venv cmatrix neovim
             ;;
         fedora|rhel|centos|rocky|almalinux)
             echo "Installing packages for Red Hat based distro..."
             sudo dnf update -y
             sudo dnf install -y vim-enhanced git gh curl wget unzip nodejs npm \
                 tmux tree ripgrep fzf fd-find xsel htop cmatrix python3-devel \
-                python3-pip python3-virtualenv
+                python3-pip python3-virtualenv neovim
+            ;;
+        arch)
+            echo "Installing packages for Arch Linux..."
+            sudo pacman -Syu --noconfirm
+            sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip \
+                nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim
             ;;
         *)
             echo "Unsupported OS: $OS"
@@ -45,7 +51,7 @@ install_packages() {
 sync_configs() {
     echo "Syncing configuration files..."
     # Dotfiles
-    for file in .bashrc .vimrc .gitconfig .tmux.conf .Xmodmap; do
+    for file in .bashrc .vimrc .gitconfig .tmux.conf .Xmodmap .zshrc; do
         ln -sf "$HOME/dotfiles/$file" "$HOME/$file"
     done
     # Byobu
