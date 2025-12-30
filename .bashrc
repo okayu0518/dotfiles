@@ -123,5 +123,7 @@ export XMODIFIERS=@im=fcitx
 export PATH="$HOME/.local/bin:$PATH"
 
 # fnm
-export FNM_DIR="$HOME/.local/share/fnm"
-eval "$(fnm env --use-on-cd)"
+if command -v fnm &> /dev/null; then
+    export FNM_DIR="$HOME/.local/share/fnm"
+    eval "$(fnm env --use-on-cd)"
+fi

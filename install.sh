@@ -45,6 +45,12 @@ install_packages() {
             exit 1
             ;;
     esac
+
+    # fnm (Fast Node Manager) installation
+    if ! command -v fnm &> /dev/null; then
+        echo "Installing fnm..."
+        curl -fsSL https://fnm.vercel.app/install | bash
+    fi
 }
 
 # 設定ファイル同期
@@ -64,13 +70,13 @@ sync_configs() {
     # Alacritty
     mkdir -p "$HOME/.config/alacritty"
     ln -sf "$HOME/dotfiles/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-		# wezterm
-		mkdir -p "$HOME/.config/wezterm"
-		ln -sf "$HOME/dotfiles/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
-		# Emacs
-		mkdir -p "$HOME/.emacs.d"
-		ln -sf "$HOME/dotfiles/.emacs.d_init.el" "$HOME/.emacs.d/init.el"
-		echo "Configuration files synced!"
+    # wezterm
+    mkdir -p "$HOME/.config/wezterm"
+    ln -sf "$HOME/dotfiles/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
+    # Emacs
+    mkdir -p "$HOME/.emacs.d"
+    ln -sf "$HOME/dotfiles/.emacs.d_init.el" "$HOME/.emacs.d/init.el"
+    echo "Configuration files synced!"
 }
 
 # フォントインストール

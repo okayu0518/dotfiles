@@ -14,10 +14,11 @@ chmod +x install.sh
 ## 含まれる設定
 
 - **Neovim**: ミニマルで高速な設定
-- **Emacs**: init.el設定
-- **Terminal**: Alacritty, Wezterm, Bash, Tmux
+- **Emacs**: init.el設定（Emacs 29+推奨）
+- **Terminal**: Alacritty, Wezterm, Bash, Zsh, Tmux
 - **Git**: 基本設定
 - **Font**: Hack Nerd Font
+- **Node.js**: fnm (Fast Node Manager)
 
 ## キーバインド
 
