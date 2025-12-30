@@ -14,7 +14,8 @@ chmod +x install.sh
 ## 含まれる設定
 
 - **Neovim**: ミニマルで高速な設定
-- **Terminal**: Alacritty, Bash, Tmux
+- **Emacs**: init.el設定
+- **Terminal**: Alacritty, Wezterm, Bash, Tmux
 - **Git**: 基本設定
 - **Font**: Hack Nerd Font
 

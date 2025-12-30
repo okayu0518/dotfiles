@@ -67,6 +67,9 @@ sync_configs() {
 		# wezterm
 		mkdir -p "$HOME/.config/wezterm"
 		ln -sf "$HOME/dotfiles/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
+		# Emacs
+		mkdir -p "$HOME/.emacs.d"
+		ln -sf "$HOME/dotfiles/.emacs.d_init.el" "$HOME/.emacs.d/init.el"
 		echo "Configuration files synced!"
 }
 
