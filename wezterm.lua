@@ -36,4 +36,6 @@ config.keys = {
   },
 }
 
+config.front_end = "Software"
+
 return config
