@@ -39,8 +39,9 @@ install_packages() {
             sudo pacman -Syu --noconfirm
             sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip \
                 nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow
-            ;;*
-            echo "Unsupported OS: $OS"
+            ;;
+	*)
+	    echo "Unsupported OS: $OS"
             exit 1
             ;;
     esac
