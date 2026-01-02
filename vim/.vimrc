@@ -105,8 +105,8 @@ let &t_EI = "\<Esc>[1 q"
 "inoremap <C-b> <left>
 
 " 表示行単位で上下移動するように
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " Windows CRLFを削除
 autocmd BufReadPost * silent! %s/\r//g
