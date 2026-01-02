@@ -25,22 +25,21 @@ install_packages() {
             sudo apt update
             sudo apt install -y vim-gtk3 git gh curl wget build-essential unzip \
                 nodejs npm tmux tree ripgrep fzf fd-find xsel htop python3-dev \
-                python3-pip python3-venv cmatrix neovim tree-sitter-cli
+                python3-pip python3-venv cmatrix neovim tree-sitter-cli stow
             ;;
         fedora|rhel|centos|rocky|almalinux)
             echo "Installing packages for Red Hat based distro..."
             sudo dnf update -y
             sudo dnf install -y vim-enhanced git gh curl wget unzip nodejs npm \
                 tmux tree ripgrep fzf fd-find xsel htop cmatrix python3-devel \
-                python3-pip python3-virtualenv neovim tree-sitter-cli
+                python3-pip python3-virtualenv neovim tree-sitter-cli stow
             ;;
         arch)
             echo "Installing packages for Arch Linux..."
             sudo pacman -Syu --noconfirm
             sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip \
-                nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli
-            ;;
-        *)
+                nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow
+            ;;*
             echo "Unsupported OS: $OS"
             exit 1
             ;;
@@ -55,27 +54,27 @@ install_packages() {
 
 # 設定ファイル同期
 sync_configs() {
-    echo "Syncing configuration files..."
-    # Dotfiles
-    for file in .bashrc .vimrc .gitconfig .tmux.conf .Xmodmap .zshrc; do
-        ln -sf "$HOME/dotfiles/$file" "$HOME/$file"
+    echo "Syncing configuration files using Stow..."
+    
+    DOTFILES_DIR="$HOME/dotfiles"
+    
+    # ディレクトリ移動
+    cd "$DOTFILES_DIR"
+
+    # Stow対象のパッケージリスト
+    PACKAGES=(bash zsh git tmux vim emacs x11 alacritty wezterm nvim)
+
+    for package in "${PACKAGES[@]}"; do
+        echo "Stowing $package..."
+        # -v: verbose, -R: restow (再実行時にリンクを修復), -t: target directory
+        stow -v -R -t "$HOME" "$package"
     done
-    # Byobu
+
+    # Byobu specific setup
+    # Byobuは .byobu/.tmux.conf を読み込むため、tmuxの設定へのリンクを作成
     mkdir -p "$HOME/.byobu"
-    ln -sf "$HOME/dotfiles/.tmux.conf" "$HOME/.byobu/.tmux.conf"
-    # Neovim
-    mkdir -p "$HOME/.config"
-    rm -rf "$HOME/.config/nvim"
-    ln -sf "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
-    # Alacritty
-    mkdir -p "$HOME/.config/alacritty"
-    ln -sf "$HOME/dotfiles/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-    # wezterm
-    mkdir -p "$HOME/.config/wezterm"
-    ln -sf "$HOME/dotfiles/wezterm.lua" "$HOME/.config/wezterm/wezterm.lua"
-    # Emacs
-    mkdir -p "$HOME/.emacs.d"
-    ln -sf "$HOME/dotfiles/.emacs.d_init.el" "$HOME/.emacs.d/init.el"
+    ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.byobu/.tmux.conf"
+
     echo "Configuration files synced!"
 }
 
