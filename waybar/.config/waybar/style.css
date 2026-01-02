@@ -1,0 +1,172 @@
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+* {
+    font-family: "Hack Nerd Font", "JetBrainsMono Nerd Font", "Noto Color Emoji", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: transparent;
+}
+
+/* Modules Style */
+#custom-launcher,
+#workspaces,
+#window,
+#clock,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#memory,
+#cpu,
+#battery,
+#tray,
+#custom-notification,
+#custom-power {
+    background-color: @base;
+    color: @text;
+    border-radius: 10px;
+    padding: 2px 10px;
+    margin: 4px 2px;
+    border: 1px solid @surface1;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+#custom-launcher {
+    color: @blue;
+    font-size: 18px;
+    padding-right: 18px;
+}
+
+#workspaces {
+    padding: 0px 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: @subtext0;
+    background: transparent;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: @text;
+    background: @surface1;
+}
+
+#workspaces button.active {
+    color: @base;
+    background: @mauve;
+    min-width: 24px;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#window {
+    background-color: @surface0;
+    color: @subtext1;
+}
+
+#clock {
+    color: @lavender;
+    font-size: 15px;
+}
+
+#pulseaudio {
+    color: @blue;
+}
+
+#bluetooth {
+    color: @sapphire;
+}
+
+#backlight {
+    color: @yellow;
+}
+
+#memory {
+    color: @green;
+}
+
+#cpu {
+    color: @peach;
+}
+
+#battery {
+    color: @green;
+}
+
+#battery.charging {
+    color: @sky;
+}
+
+#battery.warning {
+    color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#tray {
+    background-color: @surface0;
+}
+
+#custom-power {
+    color: @red;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: @red;
+        color: @base;
+    }
+}
