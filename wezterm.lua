@@ -15,6 +15,10 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.font = wezterm.font("JetBrains Mono")
+config.font_size = 11.0
+config.dpi = 96.0
+
 --config.font = wezterm.font_with_fallback {
 --	  { family = "Noto Sans CJK JP" },
 --    --{
@@ -36,6 +40,6 @@ config.keys = {
   },
 }
 
-config.front_end = "Software"
+--config.front_end = "OpenGL"
 
 return config

@@ -127,3 +127,6 @@ if command -v fnm &> /dev/null; then
     export FNM_DIR="$HOME/.local/share/fnm"
     eval "$(fnm env --use-on-cd)"
 fi
+# paruの補完時に出る警告を抑制するためのエイリアス
+# (補完スクリプトが内部で呼び出すコマンドに影響を与える)
+export LC_ALL=en_US.UTF-8
