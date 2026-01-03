@@ -52,8 +52,8 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%Y-%m-%d %a}",
+        "format": "{:%Y-%m-%d (%a) %H:%M}",
+        "format-alt": "{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "network": {
@@ -73,7 +73,7 @@
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "foot -e bluetoothctl"
+        "on-click": "foot -e bluetuith"
     },
     "pulseaudio": {
         "format": "{icon}  {volume}%",
