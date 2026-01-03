@@ -2,13 +2,6 @@
 
 set -e  # エラーが発生したらスクリプトを停止
 
-# キーボード設定
-setup_keyboard() {
-    echo "Setting up keyboard (capslock to ctrl)..."
-    grep -qxF 'setxkbmap -option ctrl:nocaps' ~/.xprofile 2>/dev/null || echo 'setxkbmap -option ctrl:nocaps' >> ~/.xprofile
-    gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']" 2>/dev/null || true
-}
-
 # パッケージインストール
 install_packages() {
     if [ -f /etc/os-release ]; then
@@ -46,11 +39,11 @@ install_packages() {
             ;;
     esac
 
-    # fnm (Fast Node Manager) installation
-    if ! command -v fnm &> /dev/null; then
-        echo "Installing fnm..."
-        curl -fsSL https://fnm.vercel.app/install | bash
-    fi
+#    # fnm (Fast Node Manager) installation
+#    if ! command -v fnm &> /dev/null; then
+#        echo "Installing fnm..."
+#        curl -fsSL https://fnm.vercel.app/install | bash
+#    fi
 }
 
 # 設定ファイル同期
@@ -103,7 +96,6 @@ setup_network() {
 
 # メイン実行
 main() {
-    setup_keyboard
     install_packages
     sync_configs
     install_fonts
