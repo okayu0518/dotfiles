@@ -3,7 +3,7 @@
 ;; --------------------
 (setq make-backup-files nil)
 (setq auto-save-default nil)
-
+(setq create-lockfiles nil)    ; ロックファイル (.#*) を作らない
 ;;; init.el --- Minimal & Portable Configuration
 
 ;; -----------------------------------------------------------------------------

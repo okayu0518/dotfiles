@@ -1,0 +1,26 @@
+# Emacs
+emacs/.emacs.d/elpa/
+emacs/.emacs.d/eln-cache/
+emacs/.emacs.d/auto-save-list/
+emacs/.emacs.d/tramp
+emacs/.emacs.d/places
+emacs/.emacs.d/bookmarks
+*.elc
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Vim / Neovim
+*.swp
+*.swo
+undo/
+.netrwhist
+
+# General
+.DS_Store
+*.log
