@@ -24,6 +24,8 @@
   (scroll-bar-mode -1))            ; スクロールバーを隠す
 (column-number-mode t)             ; 列番号を表示
 (global-display-line-numbers-mode t) ; 行番号を表示
+(prefer-coding-system 'utf-8)
+(global-font-lock-mode t)
 
 ;; -----------------------------------------------------------------------------
 ;; 3. Org-mode の基本設定
