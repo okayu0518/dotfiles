@@ -5,6 +5,7 @@ emacs/.emacs.d/auto-save-list/
 emacs/.emacs.d/tramp
 emacs/.emacs.d/places
 emacs/.emacs.d/bookmarks
+emacs/.emacs.d/recentf
 *.elc
 *~
 \#*\#

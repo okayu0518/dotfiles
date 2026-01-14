@@ -1,3 +1,5 @@
+(load-theme 'tsdh-dark t)
+
 ;; --------------------
 ;; No backup / autosave
 ;; --------------------
@@ -11,7 +13,7 @@
 ;; -----------------------------------------------------------------------------
 ;; C-h を Backspace として動作させる
 ;; (ヘルプは F1 か M-x help-for-help でアクセス可能)
-(define-key key-translation-map [?\C-h] [?\C-?])
+;(define-key key-translation-map [?\C-h] [?\C-?])
 
 ;; -----------------------------------------------------------------------------
 ;; 2. UI/UX の最小化（ポータビリティ重視）
@@ -26,6 +28,11 @@
 (global-display-line-numbers-mode t) ; 行番号を表示
 (prefer-coding-system 'utf-8)
 (global-font-lock-mode t)
+
+;; Set font size only for GUI
+(when (display-graphic-p)
+  (set-face-attribute 'default nil :height 120))
+
 
 ;; -----------------------------------------------------------------------------
 ;; 3. Org-mode の基本設定
