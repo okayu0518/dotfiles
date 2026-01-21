@@ -19,6 +19,8 @@
     ],
     "modules-right": [
         "custom/notification",
+        "custom/wifi",
+        "custom/bluetooth",
         "pulseaudio",
         "backlight",
         "memory",
@@ -67,7 +69,7 @@
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-muted": " Muted",
-        "on-click": "foot -e pulsemixer",
+        "on-click": "pavucontrol",
         "scroll-step": 5,
         "format-icons": {
             "headphone": "",
@@ -96,15 +98,17 @@
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
+        "format-alt": "{icon} {time}",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "memory": {
-        "format": " {}%"
+        "format": " {}%",
+        "on-click": "foot -e btop"
     },
     "cpu": {
         "format": " {usage}%",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "foot -e btop"
     },
     "tray": {
         "icon-size": 18,
@@ -134,5 +138,5 @@
         "format": "",
         "tooltip": false,
         "on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu"
-    }
+    },
 }
