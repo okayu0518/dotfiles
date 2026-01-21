@@ -6,7 +6,7 @@ local config = {}
 -- Wayland の IME バグ対策（重要）
 config.enable_wayland = false -- 一旦 Xwayland 経由だとかなり安定する
 config.audible_bell = "Disabled"
-config.window_background_opacity = 0.75
+config.window_background_opacity = 1.0
 
 config.window_padding = {
   left = 0,
