@@ -9,14 +9,6 @@ output "ASUSTek COMPUTER INC VZ229 H1LMRS032241" {
 		alias $VZ229
 }
 
-## プロファイル名: docked (外部モニタ接続時)
-#profile docked {
-#    # 外部ディスプレイの名前（DP-2やDP-8など）を指定
-#    # 複数想定される場合は、同様のプロファイルを複数用意するか
-#    # 正規表現等の指定も可能です
-#    output "DP-2" enable mode 2560x1440@60 position 0,0
-#    output "eDP-1" disable
-#}
 # プロファイル名: docked (外部モニタ接続時)
 profile vz229 {
 		output $VZ229 enable
@@ -32,6 +24,14 @@ profile docked {
     output "eDP-1" disable
 }
 
+## プロファイル名: docked (外部モニタ接続時)
+profile docked2 {
+    # 外部ディスプレイの名前（DP-2やDP-8など）を指定
+    # 複数想定される場合は、同様のプロファイルを複数用意するか
+    # 正規表現等の指定も可能です
+    output "DP-2" enable mode 2560x1440@60 position 0,0
+    output "eDP-1" disable
+}
 
 profile presentation {
     # 外部ディスプレイの名前（DP-2やDP-8など）を指定
