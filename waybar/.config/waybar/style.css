@@ -31,7 +31,7 @@
 
 * {
     font-family: "Hack Nerd Font", "JetBrainsMono Nerd Font", "Noto Color Emoji", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -68,11 +68,28 @@ window#waybar.hidden {
     margin: 4px 2px;
     border: 1px solid @surface1;
     box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover animations */
+#custom-launcher:hover,
+#clock:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#backlight:hover,
+#memory:hover,
+#cpu:hover,
+#battery:hover,
+#custom-notification:hover,
+#custom-power:hover {
+    background-color: @surface1;
+    color: @lavender;
+    border-color: @surface2;
 }
 
 #custom-launcher {
-    color: @blue;
-    font-size: 18px;
+    color: @red;
+    font-size: 14px;
     padding-right: 18px;
 }
 
@@ -110,7 +127,6 @@ window#waybar.hidden {
 
 #clock {
     color: @lavender;
-    font-size: 15px;
 }
 
 #pulseaudio {
@@ -129,8 +145,18 @@ window#waybar.hidden {
     color: @green;
 }
 
+#memory:hover {
+    background-color: @surface2;
+    color: @teal;
+}
+
 #cpu {
     color: @peach;
+}
+
+#cpu:hover {
+    background-color: @surface2;
+    color: @yellow;
 }
 
 #battery {
@@ -160,7 +186,7 @@ window#waybar.hidden {
 
 #custom-power {
     color: @red;
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 10px;
 }
 
