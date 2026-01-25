@@ -6,6 +6,7 @@ emacs/.emacs.d/tramp
 emacs/.emacs.d/places
 emacs/.emacs.d/bookmarks
 emacs/.emacs.d/recentf
+emacs/.emacs.d/eshell
 *.elc
 *~
 \#*\#
