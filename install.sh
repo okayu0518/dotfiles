@@ -56,7 +56,7 @@ sync_configs() {
     cd "$DOTFILES_DIR"
 
     # Stow対象のパッケージリスト
-    PACKAGES=(bash zsh git tmux vim emacs alacritty wezterm nvim wlogout waybar hypr foot ghostty kanshi rofi swaync)
+    PACKAGES=(bash zsh git tmux vim emacs alacritty wezterm nvim wlogout waybar hypr foot ghostty kanshi rofi swaync fcitx5 Thunar)
 
     for package in "${PACKAGES[@]}"; do
         echo "Stowing $package..."
