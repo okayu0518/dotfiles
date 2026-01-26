@@ -4,26 +4,27 @@ output "ASUSTek COMPUTER INC VZ229 H1LMRS032241" {
 		alias $VZ229
 }
 
+output "LG Electronics LG ULTRAGEAR 210NTLE4R208" {
+		mode 2560x1440
+		alias $210N
+}
+
 profile vz229 {
 		output $VZ229 enable
     output "eDP-1" disable
 }
+
+profile home {
+		output $210N enable
+		output "eDP-1" disable
+}
+
 profile presentation {
     # 外部ディスプレイの名前（DP-2やDP-8など）を指定
     # 複数想定される場合は、同様のプロファイルを複数用意するか
     # 正規表現等の指定も可能です
     output "DP-1" enable mode 1920x1080 position 0,0
     output "eDP-1" enable mode 1680x1050@60 position 1920,0
-}
-
-
-profile home {
-    # 外部ディスプレイの名前（DP-2やDP-8など）を指定
-    # 複数想定される場合は、同様のプロファイルを複数用意するか
-    # 正規表現等の指定も可能です
-    output "DP-1" enable mode 2560x1440@60 position 0,0
-		#output "DP-1" enable mode 1920x1080 position 0,0
-    output "eDP-1" disable
 }
 
 profile internal_only {
