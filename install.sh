@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e  # エラーが発生したらスクリプトを停止
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # パッケージインストール
 install_packages() {
@@ -30,8 +31,7 @@ install_packages() {
         arch)
             echo "Installing packages for Arch Linux..."
             sudo pacman -Syu --noconfirm
-            sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip \
-                nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow
+            sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow hyprland waybar rofi wlogout swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
             ;;
 	*)
 	    echo "Unsupported OS: $OS"
@@ -50,13 +50,11 @@ install_packages() {
 sync_configs() {
     echo "Syncing configuration files using Stow..."
     
-    DOTFILES_DIR="$HOME/dotfiles"
-    
     # ディレクトリ移動
-    cd "$DOTFILES_DIR"
+    cd "$SCRIPT_DIR"
 
     # Stow対象のパッケージリスト
-    PACKAGES=(bash zsh git tmux vim emacs alacritty wezterm nvim wlogout waybar hypr foot ghostty kanshi rofi swaync fcitx5 Thunar)
+		PACKAGES=(bash zsh git tmux vim emacs nvim wlogout waybar hypr ghostty kanshi rofi swaync fcitx5 Thunar foot wezterm alacritty)
 
     for package in "${PACKAGES[@]}"; do
         echo "Stowing $package..."
@@ -67,7 +65,7 @@ sync_configs() {
     # Byobu specific setup
     # Byobuは .byobu/.tmux.conf を読み込むため、tmuxの設定へのリンクを作成
     mkdir -p "$HOME/.byobu"
-    ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.byobu/.tmux.conf"
+    ln -sf "$SCRIPT_DIR/tmux/.tmux.conf" "$HOME/.byobu/.tmux.conf"
 
     echo "Configuration files synced!"
 }
