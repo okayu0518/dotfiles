@@ -31,7 +31,8 @@ install_packages() {
         arch)
             echo "Installing packages for Arch Linux..."
             sudo pacman -Syu --noconfirm
-            sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow hyprland waybar rofi swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
+            #sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow hyprland waybar rofi swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
+						sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow ghostty fcitx5-im fcitx5-mozc
             ;;
 	*)
 	    echo "Unsupported OS: $OS"
