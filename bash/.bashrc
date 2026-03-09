@@ -131,3 +131,5 @@ fi
 # paruの補完時に出る警告を抑制するためのエイリアス
 # (補完スクリプトが内部で呼び出すコマンドに影響を与える)
 export LC_ALL=en_US.UTF-8
+
+[ -f "/home/okayu/.ghcup/env" ] && . "/home/okayu/.ghcup/env" # ghcup-env

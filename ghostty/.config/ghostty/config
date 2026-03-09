@@ -26,6 +26,10 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 # font-family = Iosevka
+font-family = JetBrains Mono
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
 window-padding-x = 0
 #
 # # Spacing around the equals sign does not matter.

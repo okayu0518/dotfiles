@@ -1,8 +1,8 @@
 -- Keymaps - Keep It Simple
 local map = vim.keymap.set
 -- movement with display lines
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+--map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+--map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 
 

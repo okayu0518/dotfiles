@@ -18,21 +18,21 @@ install_packages() {
             echo "Installing packages for Debian/Ubuntu..."
             sudo apt update
             sudo apt install -y vim-gtk3 git gh curl wget build-essential unzip \
-                nodejs npm tmux tree ripgrep fzf fd-find xsel htop python3-dev \
+                nodejs npm tmux tree ripgrep fzf fd-find xsel python3-dev \
                 python3-pip python3-venv cmatrix neovim tree-sitter-cli stow
             ;;
         fedora|rhel|centos|rocky|almalinux)
             echo "Installing packages for Red Hat based distro..."
             sudo dnf update -y
             sudo dnf install -y vim-enhanced git gh curl wget unzip nodejs npm \
-                tmux tree ripgrep fzf fd-find xsel htop cmatrix python3-devel \
+                tmux tree ripgrep fzf fd-find xsel cmatrix python3-devel \
                 python3-pip python3-virtualenv neovim tree-sitter-cli stow
             ;;
         arch)
             echo "Installing packages for Arch Linux..."
             sudo pacman -Syu --noconfirm
             #sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow hyprland waybar rofi swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
-						sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow ghostty fcitx5-im fcitx5-mozc
+						sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel cmatrix python python-pip neovim tree-sitter-cli stow ghostty
             ;;
 	*)
 	    echo "Unsupported OS: $OS"
