@@ -4,9 +4,17 @@
 [[ $- != *i* ]] && return
 
 # =====================
+# Source Common Config
+# =====================
+[ -f ~/.config/shell/env.sh ] && source ~/.config/shell/env.sh
+[ -f ~/.config/shell/aliases.sh ] && source ~/.config/shell/aliases.sh
+[ -f ~/.config/shell/functions.sh ] && source ~/.config/shell/functions.sh
+
+# =====================
 # History Configuration
 # =====================
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE APPEND_HISTORY histignorealldups
+setopt EXTENDED_HISTORY
 HISTSIZE=1000
 SAVEHIST=2000
 HISTFILE=~/.zsh_history
@@ -21,36 +29,9 @@ setopt prompt_subst
 zstyle ':vcs_info:git*' formats ' (%b)'
 zstyle ':vcs_info:git*' actionformats ' (%b|%a)'
 
-if [[ "$TERM" == xterm-color || "$TERM" == *-256color ]]; then
-  color_prompt=yes
-fi
-
-if [[ "$color_prompt" == yes ]]; then
-  PROMPT='
+PROMPT='
 [%F{cyan}%n@%m%f:%F{green}%~%f%F{yellow}${vcs_info_msg_0_}%f]
 %# '
-else
-  PROMPT='
-[%n@%m:%~:]${vcs_info_msg_0_} 
-%# '
-fi
-
-# =====================
-# Aliases
-# =====================
-if [[ -x /usr/bin/dircolors ]]; then
-  eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
-
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-[[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 
 # =====================
 # Completion Configuration
@@ -73,38 +54,4 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # =====================
 # Key Bindings
 # =====================
-bindkey -e  # Use emacs keybindings
-
-# =====================
-# Custom Functions
-# =====================
-cdf() {
-  local dir
-  dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
-}
-
-# =====================
-# (Optional) Tmux/Byobu Autostart (commented out)
-# =====================
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   # Check if there are existing sessions
-#   if tmux ls &> /dev/null; then
-#     # Attach to the most recent session
-#     exec tmux attach
-#   else
-#     # Create a new session
-#     exec tmux
-#   fi
-# fi
-
-# ## byobu configuration
-# if command -v byobu &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   # Check if there are existing sessions
-#   if byobu-tmux ls &> /dev/null; then
-#     # Attach to the most recent session
-#     exec byobu-tmux attach
-#   else
-#     # Create a new session
-#     exec byobu-tmux new-session
-#   fi
-# fi
+#bindkey -e  # Use emacs keybindings
