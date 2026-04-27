@@ -17,7 +17,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Custom aliases
-alias tenki="curl wttr.in/香美市"
+alias wttr="curl wttr.in/香美市"
 
 # Source user-specific aliases if present (compatible with both shells)
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases

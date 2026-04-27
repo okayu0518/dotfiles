@@ -4,11 +4,6 @@ cdf() {
   dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
 }
 
-# Sort file in-place
-mysort() {
-    sort "$1" -o "$1"
-}
-
 # List recently modified files
 recentfiles() {
     local count=${1:-10}
@@ -37,13 +32,4 @@ today() {
     fi
 
     "${EDITOR:-nvim}" "$today_file"
-}
-
-# Backward compatible aliases
-memo() {
-    today "$@"
-}
-
-begin() {
-    today "$@"
 }
