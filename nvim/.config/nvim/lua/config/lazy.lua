@@ -79,6 +79,7 @@ require("lazy").setup({
   -- Treesitter for better syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
+		branch = "main",
     build = ":TSUpdate",
     opts = {
       ensure_installed = {
@@ -90,7 +91,7 @@ require("lazy").setup({
       indent = { enable = true },
     },
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter.config").setup(opts)
     end,
   },
 
