@@ -1,15 +1,3 @@
-# fdfind + fzf + cd key binding
-cdf() {
-  local dir
-  dir=$(fdfind --type d --hidden --exclude .git | fzf) && cd "$dir"
-}
-
-# List recently modified files
-recentfiles() {
-    local count=${1:-10}
-    find . -type f -printf '%T@ %P\n' | sort -nr | head -n "$count" | cut -d' ' -f2-
-}
-
 # Open today's diary anytime (initialize from latest markdown)
 today() {
     local diary_dir today_file latest_file

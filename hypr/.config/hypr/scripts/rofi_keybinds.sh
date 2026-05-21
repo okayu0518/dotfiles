@@ -2,20 +2,38 @@
 
 HYPR_CONF="$HOME/.config/hypr/hyprland.conf"
 
-# extract the keybinding from hyprland.conf
-mapfile -t BINDINGS < <(grep '^[[:space:]]*bind[[:space:]]*=' "$HYPR_CONF" | \
-    sed -e 's/  */ /g' -e 's/bind=//g' -e 's/, /,/g' -e 's/ # /,/' | \
-    awk -F, -v q="'" '{cmd=""; for(i=3;i<NF;i++) cmd=cmd $(i) " ";print "<b>"$1 " + " $2 "</b>  <i>" $NF ",</i><span color=" q "gray" q ">" cmd "</span>"}')
+# Build display text and keep the raw command after a tab.
+BINDINGS=$(
+  awk -F',' '
+    function trim(s) {
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", s)
+      return s
+    }
+    /^[[:space:]]*bind[[:space:]]*=/ {
+      mods = trim($1)
+      sub(/^[[:space:]]*bind[[:space:]]*=[[:space:]]*/, "", mods)
+      key = trim($2)
+      action = trim($3)
+      cmd = ""
+      for (i = 4; i <= NF; i++) {
+        cmd = cmd (i == 4 ? "" : ",") $i
+      }
+      cmd = trim(cmd)
+      printf "<b>%s + %s</b>  <i>%s</i>\t%s\n", mods, key, action, cmd
+    }
+  ' "$HYPR_CONF"
+)
 
-CHOICE=$(printf '%s\n' "${BINDINGS[@]}" | rofi -dmenu -i -markup-rows -p "Hyprland Keybinds:")
+CHOICE=$(printf '%s\n' "$BINDINGS" | rofi -dmenu -i -markup-rows -p "Hyprland Keybinds:")
 
-# extract cmd from span <span color='gray'>cmd</span>
-CMD=$(echo "$CHOICE" | sed -n 's/.*<span color='\''gray'\''>\(.*\)<\/span>.*/\1/p')
+CMD=${CHOICE#*$'\t'}
 
-# execute it if first word is exec else use hyprctl dispatch
+[ -n "$CMD" ] || exit 0
+
 if [[ $CMD == exec* ]]; then
-    eval "$CMD"
+  eval "${CMD#exec, }"
+elif [[ $CMD == exec ]]; then
+  exit 0
 else
-    hyprctl dispatch "$CMD"
+  hyprctl dispatch "$CMD"
 fi
-

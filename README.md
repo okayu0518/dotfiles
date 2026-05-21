@@ -11,6 +11,28 @@ chmod +x install.sh
 ./install.sh
 ```
 
+## CUI 環境向けの手動コマンド
+
+`install.sh` では入れないものは、必要なときだけ手動で実行する。
+
+### Arch
+
+```bash
+sudo pacman -S --noconfirm hyprland waybar rofi swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
+```
+
+### Debian / Ubuntu
+
+```bash
+sudo apt install -y hyprland waybar rofi swaync kanshi ghostty thunar fcitx5 fcitx5-mozc
+```
+
+### Fedora
+
+```bash
+sudo dnf install -y hyprland waybar rofi swaync kanshi ghostty thunar fcitx5 fcitx5-mozc
+```
+
 ## 含まれる設定
 
 - **Neovim**: ミニマルで高速な設定

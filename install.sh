@@ -32,7 +32,7 @@ install_packages() {
             echo "Installing packages for Arch Linux..."
             sudo pacman -Syu --noconfirm
             #sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow hyprland waybar rofi swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
-						sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel cmatrix python python-pip neovim tree-sitter-cli stow ghostty
+				sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel cmatrix python python-pip neovim tree-sitter-cli stow
             ;;
 	*)
 	    echo "Unsupported OS: $OS"
@@ -50,7 +50,7 @@ install_packages() {
 # 設定ファイル同期
 sync_configs() {
     echo "Syncing configuration files using Stow..."
-    
+
     # ディレクトリ移動
     cd "$SCRIPT_DIR"
 
@@ -97,7 +97,7 @@ setup_network() {
 main() {
     install_packages
     sync_configs
-    install_fonts
+    #install_fonts
     setup_network
     echo "Setup completed! Please restart your terminal session."
 }
