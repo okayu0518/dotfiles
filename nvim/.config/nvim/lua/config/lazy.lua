@@ -55,46 +55,46 @@ require("lazy").setup({
     },
   },
 
-  -- File explorer
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    keys = {
-      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file explorer" },
-      { "<leader>o", "<cmd>Neotree focus<cr>", desc = "Focus file explorer" },
-    },
-    opts = {
-      filesystem = {
-        follow_current_file = { enabled = true },
-        hijack_netrw_behavior = "open_current",
-      },
-    },
-  },
+--  -- File explorer
+--  {
+--    "nvim-neo-tree/neo-tree.nvim",
+--    branch = "v3.x",
+--    dependencies = {
+--      "nvim-lua/plenary.nvim",
+--      "nvim-tree/nvim-web-devicons",
+--      "MunifTanjim/nui.nvim",
+--    },
+--    keys = {
+--      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file explorer" },
+--      { "<leader>o", "<cmd>Neotree focus<cr>", desc = "Focus file explorer" },
+--    },
+--    opts = {
+--      filesystem = {
+--        follow_current_file = { enabled = true },
+--        hijack_netrw_behavior = "open_current",
+--      },
+--    },
+--  },
 
-  -- Treesitter for better syntax highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
-		branch = "main",
-    build = ":TSUpdate",
-    opts = {
-      ensure_installed = {
-        "bash", "c", "diff", "html", "javascript", "jsdoc", "json", "jsonc",
-        "lua", "luadoc", "luap", "markdown", "markdown_inline", "python", "query","latex", "verilog",
-        "regex", "toml", "tsx", "typescript", "vim", "vimdoc", "yaml",
-      },
-      highlight = { enable = true },
-      indent = { enable = true },
-    },
-    config = function(_, opts)
-      require("nvim-treesitter.config").setup(opts)
-    end,
-  },
-
+--  -- Treesitter for better syntax highlighting
+--  {
+--    "nvim-treesitter/nvim-treesitter",
+--		branch = "main",
+--    build = ":TSUpdate",
+--    opts = {
+--      ensure_installed = {
+--        "bash", "c", "diff", "html", "javascript", "jsdoc", "json", "jsonc",
+--        "lua", "luadoc", "luap", "markdown", "markdown_inline", "python", "query","latex", "verilog",
+--        "regex", "toml", "tsx", "typescript", "vim", "vimdoc", "yaml",
+--      },
+--      highlight = { enable = true },
+--      indent = { enable = true },
+--    },
+--    config = function(_, opts)
+--      require("nvim-treesitter.config").setup(opts)
+--    end,
+--  },
+--
   -- GitHub Copilot
   {
     "github/copilot.vim",
