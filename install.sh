@@ -98,7 +98,7 @@ main() {
     install_packages
     sync_configs
     #install_fonts
-    setup_network
+    #setup_network
     echo "Setup completed! Please restart your terminal session."
 }
 
