@@ -1,5 +1,5 @@
 # Language and Locale
-export LC_ALL=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
 
 # PATH additions
 export PATH="$HOME/.local/bin:$PATH"
