@@ -19,20 +19,20 @@ install_packages() {
             sudo apt update
             sudo apt install -y vim-gtk3 git gh curl wget build-essential unzip \
                 nodejs npm tmux tree ripgrep fzf fd-find xsel python3-dev \
-                python3-pip python3-venv cmatrix neovim tree-sitter-cli stow
+                cmatrix neovim tree-sitter-cli stow
             ;;
         fedora|rhel|centos|rocky|almalinux)
             echo "Installing packages for Red Hat based distro..."
             sudo dnf update -y
             sudo dnf install -y vim-enhanced git gh curl wget unzip nodejs npm \
                 tmux tree ripgrep fzf fd-find xsel cmatrix python3-devel \
-                python3-pip python3-virtualenv neovim tree-sitter-cli stow
+                neovim tree-sitter-cli stow
             ;;
         arch)
             echo "Installing packages for Arch Linux..."
             sudo pacman -Syu --noconfirm
-            #sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python python-pip neovim tree-sitter-cli stow hyprland waybar rofi swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
-				sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel cmatrix python python-pip neovim tree-sitter-cli stow
+            #sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel htop cmatrix python neovim tree-sitter-cli stow hyprland waybar rofi swaync kanshi ghostty fcitx5-im fcitx5-mozc thunar
+				sudo pacman -S --noconfirm vim git github-cli curl wget base-devel unzip nodejs npm tmux tree ripgrep fzf fd xsel cmatrix python neovim tree-sitter-cli stow
             ;;
 	*)
 	    echo "Unsupported OS: $OS"
@@ -62,11 +62,6 @@ sync_configs() {
         # -v: verbose, -R: restow (再実行時にリンクを修復), -t: target directory
         stow -v -R -t "$HOME" "$package"
     done
-
-    # Byobu specific setup
-    # Byobuは .byobu/.tmux.conf を読み込むため、tmuxの設定へのリンクを作成
-    mkdir -p "$HOME/.byobu"
-    ln -sf "$SCRIPT_DIR/tmux/.tmux.conf" "$HOME/.byobu/.tmux.conf"
 
     echo "Configuration files synced!"
 }
