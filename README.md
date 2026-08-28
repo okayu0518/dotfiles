@@ -37,7 +37,7 @@ sudo dnf install -y hyprland waybar rofi swaync kanshi ghostty thunar fcitx5 fci
 
 - **Neovim**: ミニマルで高速な設定
 - **Emacs**: init.el設定（Emacs 29+推奨）
-- **Terminal**: Alacritty, Wezterm, Bash, Zsh, Tmux
+- **Terminal**: Alacritty, Wezterm, Bash, Tmux
 - **Git**: 基本設定
 - **Font**: Hack Nerd Font
 - **Node.js**: fnm (Fast Node Manager)
