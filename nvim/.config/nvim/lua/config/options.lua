@@ -37,3 +37,7 @@ opt.breakindent = true     -- Wrapped lines maintain indent
 opt.updatetime = 250       -- Faster completion
 opt.timeoutlen = 300       -- Faster key sequence completion
 opt.scrolloff = 10         -- Keep cursor away from edges
+
+-- Line endings
+opt.fileformats = "unix,dos,mac"
+opt.fileformat = "unix"

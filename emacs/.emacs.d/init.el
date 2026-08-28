@@ -26,7 +26,8 @@
   (scroll-bar-mode -1))            ; スクロールバーを隠す
 (column-number-mode t)             ; 列番号を表示
 (global-display-line-numbers-mode t) ; 行番号を表示
-(prefer-coding-system 'utf-8)
+(prefer-coding-system 'utf-8-unix)
+(setq-default buffer-file-coding-system 'utf-8-unix)
 (global-font-lock-mode t)
 
 ;; Set font size only for GUI

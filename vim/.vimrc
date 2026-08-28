@@ -108,5 +108,6 @@ let &t_EI = "\<Esc>[1 q"
 "nnoremap j gj
 "nnoremap k gk
 
-" Windows CRLFを削除
-autocmd BufReadPost * silent! %s/\r//g
+" 改行コードをUNIX (LF) に統一
+set fileformats=unix,dos,mac
+set fileformat=unix
