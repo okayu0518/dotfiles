@@ -26,3 +26,17 @@ undo/
 # General
 .DS_Store
 *.log
+
+# Claude Code runtime state (not config, should not be synced)
+claude/.claude/.credentials.json
+claude/.claude/.last-cleanup
+claude/.claude/backups/
+claude/.claude/cache/
+claude/.claude/downloads/
+claude/.claude/file-history/
+claude/.claude/history.jsonl
+claude/.claude/plugins/
+claude/.claude/projects/
+claude/.claude/session-env/
+claude/.claude/sessions/
+claude/.claude/shell-snapshots/
