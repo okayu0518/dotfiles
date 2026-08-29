@@ -1,7 +1,7 @@
 {
-  "theme": "dark",
   "statusLine": {
     "type": "command",
-    "command": "python3 /home/okayu/.claude/statusline.py"
-  }
+    "command": "bash /home/okayu/.claude/statusline-command.sh"
+  },
+  "theme": "dark"
 }
