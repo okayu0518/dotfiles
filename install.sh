@@ -55,7 +55,7 @@ sync_configs() {
     cd "$SCRIPT_DIR"
 
     # Stow対象のパッケージリスト
-		PACKAGES=(bash shell git tmux vim emacs nvim wlogout waybar hypr ghostty kanshi rofi swaync foot wezterm alacritty claude)
+		PACKAGES=(bash shell git tmux vim emacs nvim wlogout waybar hypr ghostty kanshi rofi swaync foot wezterm alacritty kitty claude)
 
     for package in "${PACKAGES[@]}"; do
         echo "Stowing $package..."
