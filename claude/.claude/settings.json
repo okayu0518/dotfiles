@@ -3,5 +3,6 @@
     "type": "command",
     "command": "bash /home/okayu/.claude/statusline-command.sh"
   },
-  "theme": "dark"
+  "theme": "dark",
+  "agentPushNotifEnabled": true
 }
