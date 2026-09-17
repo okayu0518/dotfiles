@@ -5,5 +5,8 @@
     "command": "bash /home/okayu/.claude/statusline-command.sh"
   },
   "theme": "dark",
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  }
 }

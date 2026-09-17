@@ -2,12 +2,12 @@
 # Claude Code statusLine, converted from the PS1 defined in ~/.bashrc:
 #   export PS1="[\[\033[32m\]\u\[\033[00m\]@\[\033[35m\]\h\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\]]\n\$ "
 #
-# Line 1 renders: [user@host:cwd (git-branch) model]
+# Split into three short lines so it stays readable in a narrow terminal:
+#   Line 1: [user@host (git-branch) model $cost]
+#   Line 2: [cwd]
+#   Line 3: [ctx NN% | 5h NN% 1h23m | 7d NN% 3d2h]  (usage and time until reset)
 # (trailing "$ " prompt char from the original PS1 is dropped, as it has no
-# meaning in a non-interactive statusline; model name appended on request)
-#
-# Line 2 (added on request) shows context usage and Claude usage-limit status:
-#   [ctx NN% | 5h NN% remain 1h23m | 7d NN% remain 3d2h]
+# meaning in a non-interactive statusline)
 # Colors avoid blue (reported hard to read) in favor of red/yellow.
 
 input=$(cat)
@@ -21,14 +21,19 @@ host=$(hostname -s)
 # git commands skip optional locks so they never block on a concurrent git process
 branch=$(git --no-optional-locks -C "$cwd" rev-parse --abbrev-ref HEAD 2>/dev/null)
 git_part=""
-[ -n "$branch" ] && git_part=" ($branch)"
+[ -n "$branch" ] && git_part=$(printf ' \033[33m(%s)\033[0m' "$branch")
 
 model=$(echo "$input" | jq -r '.model.display_name // empty')
 model_part=""
 [ -n "$model" ] && model_part=$(printf ' \033[95m%s\033[0m' "$model")
 
-line1=$(printf '[\033[32m%s\033[0m@\033[35m%s\033[0m:\033[36m%s\033[0m\033[33m%s\033[0m%s]' \
-  "$user" "$host" "$cwd" "$git_part" "$model_part")
+cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
+cost_part=""
+[ -n "$cost" ] && cost_part=$(LC_NUMERIC=C printf ' \033[32m$%.2f\033[0m' "$cost")
+
+line1=$(printf '[\033[32m%s\033[0m@\033[35m%s\033[0m%s%s%s]' \
+  "$user" "$host" "$git_part" "$model_part" "$cost_part")
+line2=$(printf '[\033[36m%s\033[0m]' "$cwd")
 
 # --- usage-reset line -------------------------------------------------
 now=$(date +%s)
@@ -56,18 +61,17 @@ if [ -n "$ctx_pct" ]; then
   parts+=("$(printf '\033[36mctx %s%%\033[0m' "$ctx_pct")")
 fi
 if [ -n "$five_pct" ] && [ -n "$five_reset" ]; then
-  parts+=("$(printf '\033[91m5h %s%% remain %s\033[0m' "$five_pct" "$(format_remaining "$five_reset")")")
+  parts+=("$(printf '\033[91m5h %s%% %s\033[0m' "$five_pct" "$(format_remaining "$five_reset")")")
 fi
 if [ -n "$seven_pct" ] && [ -n "$seven_reset" ]; then
-  parts+=("$(printf '\033[93m7d %s%% remain %s\033[0m' "$seven_pct" "$(format_remaining "$seven_reset")")")
+  parts+=("$(printf '\033[93m7d %s%% %s\033[0m' "$seven_pct" "$(format_remaining "$seven_reset")")")
 fi
 
+printf '%s\n%s' "$line1" "$line2"
 if [ "${#parts[@]}" -gt 0 ]; then
   joined="${parts[0]}"
   for p in "${parts[@]:1}"; do
     joined="$joined | $p"
   done
-  printf '%s\n[%s]' "$line1" "$joined"
-else
-  printf '%s' "$line1"
+  printf '\n[%s]' "$joined"
 fi
