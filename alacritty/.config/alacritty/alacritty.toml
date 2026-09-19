@@ -10,12 +10,12 @@ style.shape = "Block"
 [font]
 # builtin_box_drawing = true
 size = 12.0
-normal.family = "Hack Nerd Font"
-normal.style = "Regular"
-bold.family = "Hack Nerd Font"
-bold.style = "Bold"
-italic.family = "Hack Nerd Font"
-italic.style = "Italic"
+#normal.family = "Hack Nerd Font"
+#normal.style = "Regular"
+#bold.family = "Hack Nerd Font"
+#bold.style = "Bold"
+#italic.family = "Hack Nerd Font"
+#italic.style = "Italic"
 glyph_offset.x = 0
 glyph_offset.y = 1
 
